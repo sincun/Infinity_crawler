@@ -1,0 +1,112 @@
+2018-05-28 21:55:37,328  filedownload 41 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 06:50:46,473  filedownload 41 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 06:50:46,473  filedownload 43 Acrawler ERROR:  
+2018-05-29 06:51:35,547  filedownload 41 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 06:51:35,548  filedownload 43 Acrawler ERROR:  
+2018-05-29 06:55:29,113  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 06:57:58,514  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 06:57:58,515  filedownload 42 Acrawler ERROR:  <class 'urllib.error.URLError'>
+2018-05-29 06:57:58,516  filedownload 43 Acrawler ERROR:  <urlopen error [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。>
+2018-05-29 06:57:58,647  filedownload 44 Acrawler ERROR:  <traceback object at 0x05179440>
+2018-05-29 07:10:21,553  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 07:10:21,554  filedownload 42 Acrawler ERROR:  URLError
+2018-05-29 07:14:41,274  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 07:14:41,275  filedownload 42 Acrawler ERROR:  URLError
+2018-05-29 07:20:25,104  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 07:20:25,105  filedownload 42 Acrawler ERROR:  URLError
+2018-05-29 07:20:25,105  filedownload 43 Acrawler ERROR:  {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-05-29 07:22:32,283  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 07:22:32,284  filedownload 42 Acrawler ERROR:  URLError
+2018-05-29 07:22:32,284  filedownload 43 Acrawler ERROR:  <urlopen error [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。>
+2018-05-29 07:27:57,840  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 07:27:57,841  filedownload 42 Acrawler ERROR:  URLError
+2018-05-29 07:28:47,699  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 07:28:47,700  filedownload 42 Acrawler ERROR:  URLError
+2018-05-29 07:28:47,701  filedownload 43 Acrawler ERROR:  <urlopen error [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。>
+2018-05-29 07:31:34,789  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 07:31:34,790  filedownload 42 Acrawler ERROR:  URLError
+2018-05-29 07:31:34,790  filedownload 43 Acrawler ERROR:  {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-05-29 07:31:34,791  filedownload 44 Acrawler ERROR:  catch excepted None
+2018-05-29 07:36:22,770  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 07:36:22,771  filedownload 42 Acrawler ERROR:  URLError
+2018-05-29 07:36:22,771  filedownload 43 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-05-29 07:38:10,282  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 07:38:10,283  filedownload 42 Acrawler ERROR:  {'__init__': <function URLError.__init__ at 0x05A9F0C0>, '__module__': 'urllib.error', '__str__': <function URLError.__str__ at 0x05A9F738>, '__doc__': None, '__weakref__': <attribute '__weakref__' of 'URLError' objects>}
+2018-05-29 07:38:10,283  filedownload 43 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-05-29 07:40:25,774  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 07:40:25,775  filedownload 42 Acrawler ERROR:  URLError
+2018-05-29 07:40:25,775  filedownload 43 Acrawler ERROR:  <urlopen error [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。>
+2018-05-29 07:41:28,320  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 07:41:28,321  filedownload 42 Acrawler ERROR:  URLError
+2018-05-29 07:41:28,321  filedownload 43 Acrawler ERROR:  {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-05-29 07:43:59,294  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-29 07:43:59,295  filedownload 42 Acrawler ERROR:  URLError
+2018-05-31 06:09:05,843  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-31 06:09:05,853  filedownload 42 Acrawler ERROR:  URLError
+2018-05-31 06:09:05,853  filedownload 43 Acrawler ERROR:  {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-05-31 06:43:40,780  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-31 06:43:40,781  filedownload 42 Acrawler ERROR:  URLError
+2018-05-31 06:43:40,781  filedownload 43 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-05-31 06:43:40,782  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-05-31 07:17:24,913  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-31 07:17:24,913  filedownload 42 Acrawler ERROR:  URLError
+2018-05-31 07:17:24,914  filedownload 43 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-05-31 07:17:24,914  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-05-31 07:17:24,914  filedownload 45 Acrawler ERROR:  None
+2018-05-31 07:23:39,428  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-31 07:23:39,429  filedownload 42 Acrawler ERROR:  URLError
+2018-05-31 07:23:39,429  filedownload 43 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-05-31 07:23:39,429  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-05-31 07:23:39,430  filedownload 45 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-05-31 07:25:29,177  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-31 07:25:29,177  filedownload 42 Acrawler ERROR:  URLError
+2018-05-31 07:25:29,177  filedownload 43 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-05-31 07:25:29,178  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-05-31 07:25:29,178  filedownload 45 Acrawler ERROR:  <traceback object at 0x056558A0>
+2018-05-31 07:30:49,417  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-31 07:30:49,417  filedownload 42 Acrawler ERROR:  URLError
+2018-05-31 07:30:49,417  filedownload 43 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-05-31 07:30:49,417  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-05-31 07:30:49,417  filedownload 45 Acrawler ERROR:  <frame object at 0x05B9AB58>
+2018-05-31 07:30:49,417  filedownload 46 Acrawler ERROR:  33
+2018-05-31 07:39:53,160  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-31 07:39:53,160  filedownload 42 Acrawler ERROR:  URLError
+2018-05-31 07:39:53,160  filedownload 43 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-05-31 07:39:53,160  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-05-31 07:39:53,161  filedownload 45 Acrawler ERROR:  C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py
+2018-05-31 07:39:53,161  filedownload 46 Acrawler ERROR:  33
+2018-05-31 07:39:53,161  filedownload 47 Acrawler ERROR:  run
+2018-05-31 07:43:07,442  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-05-31 07:43:07,443  filedownload 42 Acrawler ERROR:  URLError
+2018-05-31 07:43:07,444  filedownload 43 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-05-31 07:43:07,444  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-05-31 07:43:07,445  filedownload 45 Acrawler ERROR:  C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py
+2018-05-31 07:43:07,445  filedownload 46 Acrawler ERROR:  33
+2018-06-04 06:33:08,176  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-06-04 06:33:08,186  filedownload 42 Acrawler ERROR:  URLError
+2018-06-04 06:33:08,186  filedownload 43 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-06-04 06:33:08,264  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-06-04 06:33:08,268  filedownload 45 Acrawler ERROR:  C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py
+2018-06-04 06:33:08,268  filedownload 46 Acrawler ERROR:  33
+2018-06-04 06:45:24,651  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-06-04 06:48:21,285  acrawler 59 Acrawler WARNING:  acrawler url connnect timeout,('c.youdao.com', 80)
+2018-06-04 06:50:54,984  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-06-04 06:50:54,984  setting 23 Acrawler ERROR:  line: 33 file: C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-06-04 06:50:54,985  setting 24 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-06-04 06:54:53,826  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-06-04 06:54:53,826  setting 23 Acrawler ERROR:  line: 33 file: C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-06-04 06:54:53,827  setting 24 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-06-04 07:05:01,404  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-06-04 07:05:01,405  setting 23 Acrawler ERROR:  line: 33 file: C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-06-04 07:05:01,405  setting 24 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-06-04 07:05:30,151  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-06-04 07:05:30,151  setting 23 Acrawler ERROR:  line: 33 file: C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-06-04 07:05:30,152  setting 24 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-06-04 07:05:55,982  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-06-04 07:05:55,982  setting 23 Acrawler ERROR:  line: 33 file: C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-06-04 07:05:55,982  setting 24 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-06-04 07:10:53,556  acrawler 60 Acrawler WARNING:  acrawler url connnect timeout,('www.google.com', 80)
+2018-06-04 07:10:53,557  setting 23 Acrawler ERROR:  line: 58 file: C:/Users/belief/Desktop/Mr.S/Script/Python/acrawler/acrawler.py ExceptName: timeout dictMessage: {}
+2018-06-04 07:13:18,764  acrawler 60 Acrawler WARNING:  acrawler url connnect timeout,('www.google.com', 80)
+2018-06-04 07:13:18,765  setting 26 Acrawler ERROR:  line: 58 file: C:/Users/belief/Desktop/Mr.S/Script/Python/acrawler/acrawler.py ExceptName: timeout dictMessage: {}
+2018-06-04 07:15:08,897  acrawler 32 Acrawler WARNING:  url format error 'htp://www.google.com'
