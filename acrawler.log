@@ -1,130 +1,82 @@
-2018-05-28 21:55:37,328  filedownload 41 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 06:50:46,473  filedownload 41 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 06:50:46,473  filedownload 43 Acrawler ERROR:  
-2018-05-29 06:51:35,547  filedownload 41 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 06:51:35,548  filedownload 43 Acrawler ERROR:  
-2018-05-29 06:55:29,113  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 06:57:58,514  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 06:57:58,515  filedownload 42 Acrawler ERROR:  <class 'urllib.error.URLError'>
-2018-05-29 06:57:58,516  filedownload 43 Acrawler ERROR:  <urlopen error [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£>
-2018-05-29 06:57:58,647  filedownload 44 Acrawler ERROR:  <traceback object at 0x05179440>
-2018-05-29 07:10:21,553  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 07:10:21,554  filedownload 42 Acrawler ERROR:  URLError
-2018-05-29 07:14:41,274  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 07:14:41,275  filedownload 42 Acrawler ERROR:  URLError
-2018-05-29 07:20:25,104  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 07:20:25,105  filedownload 42 Acrawler ERROR:  URLError
-2018-05-29 07:20:25,105  filedownload 43 Acrawler ERROR:  {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-05-29 07:22:32,283  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 07:22:32,284  filedownload 42 Acrawler ERROR:  URLError
-2018-05-29 07:22:32,284  filedownload 43 Acrawler ERROR:  <urlopen error [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£>
-2018-05-29 07:27:57,840  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 07:27:57,841  filedownload 42 Acrawler ERROR:  URLError
-2018-05-29 07:28:47,699  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 07:28:47,700  filedownload 42 Acrawler ERROR:  URLError
-2018-05-29 07:28:47,701  filedownload 43 Acrawler ERROR:  <urlopen error [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£>
-2018-05-29 07:31:34,789  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 07:31:34,790  filedownload 42 Acrawler ERROR:  URLError
-2018-05-29 07:31:34,790  filedownload 43 Acrawler ERROR:  {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-05-29 07:31:34,791  filedownload 44 Acrawler ERROR:  catch excepted None
-2018-05-29 07:36:22,770  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 07:36:22,771  filedownload 42 Acrawler ERROR:  URLError
-2018-05-29 07:36:22,771  filedownload 43 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-05-29 07:38:10,282  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 07:38:10,283  filedownload 42 Acrawler ERROR:  {'__init__': <function URLError.__init__ at 0x05A9F0C0>, '__module__': 'urllib.error', '__str__': <function URLError.__str__ at 0x05A9F738>, '__doc__': None, '__weakref__': <attribute '__weakref__' of 'URLError' objects>}
-2018-05-29 07:38:10,283  filedownload 43 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-05-29 07:40:25,774  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 07:40:25,775  filedownload 42 Acrawler ERROR:  URLError
-2018-05-29 07:40:25,775  filedownload 43 Acrawler ERROR:  <urlopen error [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£>
-2018-05-29 07:41:28,320  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 07:41:28,321  filedownload 42 Acrawler ERROR:  URLError
-2018-05-29 07:41:28,321  filedownload 43 Acrawler ERROR:  {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-05-29 07:43:59,294  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-29 07:43:59,295  filedownload 42 Acrawler ERROR:  URLError
-2018-05-31 06:09:05,843  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-31 06:09:05,853  filedownload 42 Acrawler ERROR:  URLError
-2018-05-31 06:09:05,853  filedownload 43 Acrawler ERROR:  {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-05-31 06:43:40,780  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-31 06:43:40,781  filedownload 42 Acrawler ERROR:  URLError
-2018-05-31 06:43:40,781  filedownload 43 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-05-31 06:43:40,782  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-05-31 07:17:24,913  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-31 07:17:24,913  filedownload 42 Acrawler ERROR:  URLError
-2018-05-31 07:17:24,914  filedownload 43 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-05-31 07:17:24,914  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-05-31 07:17:24,914  filedownload 45 Acrawler ERROR:  None
-2018-05-31 07:23:39,428  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-31 07:23:39,429  filedownload 42 Acrawler ERROR:  URLError
-2018-05-31 07:23:39,429  filedownload 43 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-05-31 07:23:39,429  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-05-31 07:23:39,430  filedownload 45 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-05-31 07:25:29,177  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-31 07:25:29,177  filedownload 42 Acrawler ERROR:  URLError
-2018-05-31 07:25:29,177  filedownload 43 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-05-31 07:25:29,178  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-05-31 07:25:29,178  filedownload 45 Acrawler ERROR:  <traceback object at 0x056558A0>
-2018-05-31 07:30:49,417  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-31 07:30:49,417  filedownload 42 Acrawler ERROR:  URLError
-2018-05-31 07:30:49,417  filedownload 43 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-05-31 07:30:49,417  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-05-31 07:30:49,417  filedownload 45 Acrawler ERROR:  <frame object at 0x05B9AB58>
-2018-05-31 07:30:49,417  filedownload 46 Acrawler ERROR:  33
-2018-05-31 07:39:53,160  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-31 07:39:53,160  filedownload 42 Acrawler ERROR:  URLError
-2018-05-31 07:39:53,160  filedownload 43 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-05-31 07:39:53,160  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-05-31 07:39:53,161  filedownload 45 Acrawler ERROR:  C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py
-2018-05-31 07:39:53,161  filedownload 46 Acrawler ERROR:  33
-2018-05-31 07:39:53,161  filedownload 47 Acrawler ERROR:  run
-2018-05-31 07:43:07,442  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-05-31 07:43:07,443  filedownload 42 Acrawler ERROR:  URLError
-2018-05-31 07:43:07,444  filedownload 43 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-05-31 07:43:07,444  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-05-31 07:43:07,445  filedownload 45 Acrawler ERROR:  C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py
-2018-05-31 07:43:07,445  filedownload 46 Acrawler ERROR:  33
-2018-06-04 06:33:08,176  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-06-04 06:33:08,186  filedownload 42 Acrawler ERROR:  URLError
-2018-06-04 06:33:08,186  filedownload 43 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-06-04 06:33:08,264  filedownload 44 Acrawler ERROR:  {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-06-04 06:33:08,268  filedownload 45 Acrawler ERROR:  C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py
-2018-06-04 06:33:08,268  filedownload 46 Acrawler ERROR:  33
-2018-06-04 06:45:24,651  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-06-04 06:48:21,285  acrawler 59 Acrawler WARNING:  acrawler url connnect timeout,('c.youdao.com', 80)
-2018-06-04 06:50:54,984  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-06-04 06:50:54,984  setting 23 Acrawler ERROR:  line: 33 file: C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-06-04 06:50:54,985  setting 24 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-06-04 06:54:53,826  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-06-04 06:54:53,826  setting 23 Acrawler ERROR:  line: 33 file: C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-06-04 06:54:53,827  setting 24 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-06-04 07:05:01,404  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-06-04 07:05:01,405  setting 23 Acrawler ERROR:  line: 33 file: C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-06-04 07:05:01,405  setting 24 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-06-04 07:05:30,151  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-06-04 07:05:30,151  setting 23 Acrawler ERROR:  line: 33 file: C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-06-04 07:05:30,152  setting 24 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-06-04 07:05:55,982  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-06-04 07:05:55,982  setting 23 Acrawler ERROR:  line: 33 file: C:\Users\belief\Desktop\Mr.S\Script\Python\acrawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-06-04 07:05:55,982  setting 24 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-06-04 07:10:53,556  acrawler 60 Acrawler WARNING:  acrawler url connnect timeout,('www.google.com', 80)
-2018-06-04 07:10:53,557  setting 23 Acrawler ERROR:  line: 58 file: C:/Users/belief/Desktop/Mr.S/Script/Python/acrawler/acrawler.py ExceptName: timeout dictMessage: {}
-2018-06-04 07:13:18,764  acrawler 60 Acrawler WARNING:  acrawler url connnect timeout,('www.google.com', 80)
-2018-06-04 07:13:18,765  setting 26 Acrawler ERROR:  line: 58 file: C:/Users/belief/Desktop/Mr.S/Script/Python/acrawler/acrawler.py ExceptName: timeout dictMessage: {}
-2018-06-04 07:15:08,897  acrawler 32 Acrawler WARNING:  url format error 'htp://www.google.com'
-2018-06-06 21:07:28,094  acrawler 60 Acrawler WARNING:  acrawler url connnect timeout,('www.google.com', 80)
-2018-06-06 21:07:28,223  setting 26 Acrawler ERROR:  line: 58 file: C:/Users/belief/Desktop/Mr.S/GitHub/Infinity_crawler/acrawler.py ExceptName: timeout dictMessage: {}
-2018-06-06 21:09:13,527  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
-2018-06-06 21:09:13,528  setting 23 Acrawler ERROR:  [WinError 10060] ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£
-2018-06-06 21:09:13,546  setting 26 Acrawler ERROR:  line: 33 file: C:\Users\belief\Desktop\Mr.S\GitHub\Infinity_crawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, 'ÓÉÓÚÁ¬½Ó·½ÔÚÒ»¶ÎÊ±¼äºóÃ»ÓĞÕıÈ·´ğ¸´»òÁ¬½ÓµÄÖ÷»úÃ»ÓĞ·´Ó¦£¬Á¬½Ó³¢ÊÔÊ§°Ü¡£', None, 10060, None)}
-2018-06-06 22:08:35,707  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=740, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 64389), raddr=('211.147.1.202', 80)>
-2018-06-06 22:14:30,454  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=676, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 49956), raddr=('211.147.1.202', 80)>
-2018-06-06 22:16:54,853  launchCapture 42 Acrawler DEBUG:  1
-2018-06-06 22:16:55,354  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=724, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 50493), raddr=('211.147.1.202', 80)>
-2018-06-06 22:19:46,208  launchCapture 43 Acrawler DEBUG:  1
-2018-06-06 22:19:46,479  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=748, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 51391), raddr=('211.147.1.202', 80)>
-2018-06-06 22:19:46,480  launchCapture 21 Acrawler DEBUG:  analysis result set()
-2018-06-06 22:19:57,936  launchCapture 43 Acrawler DEBUG:  1
-2018-06-06 22:19:58,220  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=688, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 51440), raddr=('211.147.1.202', 80)>
-2018-06-06 22:19:58,221  launchCapture 21 Acrawler DEBUG:  analysis result set()
-2018-06-06 22:20:43,805  launchCapture 43 Acrawler DEBUG:  1
-2018-06-06 22:20:43,899  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=728, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 51658), raddr=('211.147.1.202', 80)>
-2018-06-06 22:20:43,901  launchCapture 21 Acrawler DEBUG:  analysis result set()
+2018-06-07 07:08:45,265  launchCapture 43 Acrawler DEBUG:  1
+2018-06-07 07:08:45,583  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=520, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 54621), raddr=('211.147.1.202', 80)>
+2018-06-07 07:08:45,584  launchCapture 22 Acrawler DEBUG:  analysis result set()
+2018-06-07 07:09:41,790  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=416, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 54717), raddr=('211.161.84.163', 80)>
+2018-06-07 07:09:41,907  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.com//shared.ydstatic.com/js/zepto/1.1.6.js
+2018-06-07 07:09:41,920  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.com//shared.ydstatic.com/js/ydk/ydk-1.4.4-min.js
+2018-06-07 07:09:41,929  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://shared.ydstatic.com/js/console/1.1.0.js
+2018-06-07 07:09:41,935  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.comindex.js
+2018-06-07 07:09:41,943  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://shared.ydstatic.com/js/rlog/v1.js
+2018-06-07 07:09:42,191  filedownload 36 Acrawler WARNING:  url not download http://c.youdao.com//shared.ydstatic.com/js/zepto/1.1.6.js
+2018-06-07 07:09:42,200  filedownload 36 Acrawler WARNING:  url not download http://c.youdao.com//shared.ydstatic.com/js/ydk/ydk-1.4.4-min.js
+2018-06-07 07:10:03,165  filedownload 41 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-06-07 07:10:03,166  setting 23 Acrawler ERROR:  [WinError 10060] ç”±äºè¿æ¥æ–¹åœ¨ä¸€æ®µæ—¶é—´åæ²¡æœ‰æ­£ç¡®ç­”å¤æˆ–è¿æ¥çš„ä¸»æœºæ²¡æœ‰ååº”ï¼Œè¿æ¥å°è¯•å¤±è´¥ã€‚
+2018-06-07 07:10:03,176  setting 26 Acrawler ERROR:  line: 34 file: C:\Users\belief\Desktop\Mr.S\GitHub\Infinity_crawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, 'ç”±äºè¿æ¥æ–¹åœ¨ä¸€æ®µæ—¶é—´åæ²¡æœ‰æ­£ç¡®ç­”å¤æˆ–è¿æ¥çš„ä¸»æœºæ²¡æœ‰ååº”ï¼Œè¿æ¥å°è¯•å¤±è´¥ã€‚', None, 10060, None)}
+2018-06-07 07:14:02,110  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=536, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 55208), raddr=('211.161.84.163', 80)>
+2018-06-07 07:14:02,114  acrawler 192 Acrawler DEBUG:  page href link,will download://shared.ydstatic.com/js/zepto/1.1.6.js
+2018-06-07 07:14:02,119  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.com//shared.ydstatic.com/js/zepto/1.1.6.js
+2018-06-07 07:14:02,120  acrawler 192 Acrawler DEBUG:  page href link,will download://shared.ydstatic.com/js/ydk/ydk-1.4.4-min.js
+2018-06-07 07:14:02,129  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.com//shared.ydstatic.com/js/ydk/ydk-1.4.4-min.js
+2018-06-07 07:14:02,129  acrawler 192 Acrawler DEBUG:  page href link,will download:http://shared.ydstatic.com/js/console/1.1.0.js
+2018-06-07 07:14:02,134  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://shared.ydstatic.com/js/console/1.1.0.js
+2018-06-07 07:14:02,135  acrawler 192 Acrawler DEBUG:  page href link,will download:index.js
+2018-06-07 07:14:02,138  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.comindex.js
+2018-06-07 07:14:02,139  acrawler 192 Acrawler DEBUG:  page href link,will download:http://shared.ydstatic.com/js/rlog/v1.js
+2018-06-07 07:14:02,149  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://shared.ydstatic.com/js/rlog/v1.js
+2018-06-07 07:14:02,334  filedownload 36 Acrawler WARNING:  url not download http://c.youdao.com//shared.ydstatic.com/js/zepto/1.1.6.js
+2018-06-07 07:14:02,394  filedownload 36 Acrawler WARNING:  url not download http://c.youdao.com//shared.ydstatic.com/js/ydk/ydk-1.4.4-min.js
+2018-06-07 07:14:23,241  filedownload 41 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-06-07 07:14:23,241  setting 23 Acrawler ERROR:  [WinError 10060] ç”±äºè¿æ¥æ–¹åœ¨ä¸€æ®µæ—¶é—´åæ²¡æœ‰æ­£ç¡®ç­”å¤æˆ–è¿æ¥çš„ä¸»æœºæ²¡æœ‰ååº”ï¼Œè¿æ¥å°è¯•å¤±è´¥ã€‚
+2018-06-07 07:14:23,242  setting 26 Acrawler ERROR:  line: 34 file: C:\Users\belief\Desktop\Mr.S\GitHub\Infinity_crawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, 'ç”±äºè¿æ¥æ–¹åœ¨ä¸€æ®µæ—¶é—´åæ²¡æœ‰æ­£ç¡®ç­”å¤æˆ–è¿æ¥çš„ä¸»æœºæ²¡æœ‰ååº”ï¼Œè¿æ¥å°è¯•å¤±è´¥ã€‚', None, 10060, None)}
+2018-06-07 07:17:17,726  acrawler 54 Acrawler DEBUG:  ('c.youdao.com', 80)
+2018-06-07 07:17:17,755  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=460, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 55327), raddr=('211.161.84.163', 80)>
+2018-06-07 07:17:17,757  acrawler 192 Acrawler DEBUG:  page href link,will download://shared.ydstatic.com/js/zepto/1.1.6.js
+2018-06-07 07:17:17,758  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.com//shared.ydstatic.com/js/zepto/1.1.6.js
+2018-06-07 07:17:17,758  acrawler 192 Acrawler DEBUG:  page href link,will download://shared.ydstatic.com/js/ydk/ydk-1.4.4-min.js
+2018-06-07 07:17:17,763  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.com//shared.ydstatic.com/js/ydk/ydk-1.4.4-min.js
+2018-06-07 07:17:17,763  acrawler 192 Acrawler DEBUG:  page href link,will download:http://shared.ydstatic.com/js/console/1.1.0.js
+2018-06-07 07:17:17,766  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://shared.ydstatic.com/js/console/1.1.0.js
+2018-06-07 07:17:17,766  acrawler 192 Acrawler DEBUG:  page href link,will download:index.js
+2018-06-07 07:17:17,769  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.comindex.js
+2018-06-07 07:17:17,769  acrawler 192 Acrawler DEBUG:  page href link,will download:http://shared.ydstatic.com/js/rlog/v1.js
+2018-06-07 07:17:17,776  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://shared.ydstatic.com/js/rlog/v1.js
+2018-06-07 07:17:17,970  filedownload 36 Acrawler WARNING:  url not download http://c.youdao.com//shared.ydstatic.com/js/zepto/1.1.6.js
+2018-06-07 07:17:17,974  filedownload 36 Acrawler WARNING:  url not download http://c.youdao.com//shared.ydstatic.com/js/ydk/ydk-1.4.4-min.js
+2018-06-07 07:17:38,795  filedownload 41 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-06-07 07:17:38,796  setting 23 Acrawler ERROR:  [WinError 10060] ç”±äºè¿æ¥æ–¹åœ¨ä¸€æ®µæ—¶é—´åæ²¡æœ‰æ­£ç¡®ç­”å¤æˆ–è¿æ¥çš„ä¸»æœºæ²¡æœ‰ååº”ï¼Œè¿æ¥å°è¯•å¤±è´¥ã€‚
+2018-06-07 07:17:38,797  setting 26 Acrawler ERROR:  line: 34 file: C:\Users\belief\Desktop\Mr.S\GitHub\Infinity_crawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, 'ç”±äºè¿æ¥æ–¹åœ¨ä¸€æ®µæ—¶é—´åæ²¡æœ‰æ­£ç¡®ç­”å¤æˆ–è¿æ¥çš„ä¸»æœºæ²¡æœ‰ååº”ï¼Œè¿æ¥å°è¯•å¤±è´¥ã€‚', None, 10060, None)}
+2018-06-07 07:22:34,303  acrawler 54 Acrawler DEBUG:  ('c.youdao.com', 80)
+2018-06-07 07:22:34,375  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=436, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 55575), raddr=('211.161.83.41', 80)>
+2018-06-07 07:22:34,376  acrawler 90 Acrawler ERROR:  failed page content ,url is 'http://c.youdao.com/dict/activity/pronPrefTest/index.html?keyfrom=dict2.index'
+2018-06-07 07:22:34,378  acrawler 193 Acrawler DEBUG:  page href link,will download://shared.ydstatic.com/js/zepto/1.1.6.js
+2018-06-07 07:22:34,381  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.com//shared.ydstatic.com/js/zepto/1.1.6.js
+2018-06-07 07:22:34,381  acrawler 193 Acrawler DEBUG:  page href link,will download://shared.ydstatic.com/js/ydk/ydk-1.4.4-min.js
+2018-06-07 07:22:34,388  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.com//shared.ydstatic.com/js/ydk/ydk-1.4.4-min.js
+2018-06-07 07:22:34,388  acrawler 193 Acrawler DEBUG:  page href link,will download:http://shared.ydstatic.com/js/console/1.1.0.js
+2018-06-07 07:22:34,392  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://shared.ydstatic.com/js/console/1.1.0.js
+2018-06-07 07:22:34,393  acrawler 193 Acrawler DEBUG:  page href link,will download:index.js
+2018-06-07 07:22:34,401  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.comindex.js
+2018-06-07 07:22:34,402  acrawler 193 Acrawler DEBUG:  page href link,will download:http://shared.ydstatic.com/js/rlog/v1.js
+2018-06-07 07:22:34,404  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://shared.ydstatic.com/js/rlog/v1.js
+2018-06-07 07:22:34,564  filedownload 36 Acrawler WARNING:  url not download http://c.youdao.com//shared.ydstatic.com/js/zepto/1.1.6.js
+2018-06-07 07:22:34,607  filedownload 36 Acrawler WARNING:  url not download http://c.youdao.com//shared.ydstatic.com/js/ydk/ydk-1.4.4-min.js
+2018-06-07 07:22:55,463  filedownload 41 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-06-07 07:22:55,464  setting 23 Acrawler ERROR:  [WinError 10060] ç”±äºè¿æ¥æ–¹åœ¨ä¸€æ®µæ—¶é—´åæ²¡æœ‰æ­£ç¡®ç­”å¤æˆ–è¿æ¥çš„ä¸»æœºæ²¡æœ‰ååº”ï¼Œè¿æ¥å°è¯•å¤±è´¥ã€‚
+2018-06-07 07:22:55,464  setting 26 Acrawler ERROR:  line: 34 file: C:\Users\belief\Desktop\Mr.S\GitHub\Infinity_crawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, 'ç”±äºè¿æ¥æ–¹åœ¨ä¸€æ®µæ—¶é—´åæ²¡æœ‰æ­£ç¡®ç­”å¤æˆ–è¿æ¥çš„ä¸»æœºæ²¡æœ‰ååº”ï¼Œè¿æ¥å°è¯•å¤±è´¥ã€‚', None, 10060, None)}
+2018-06-07 07:29:43,186  acrawler 54 Acrawler DEBUG:  ('c.youdao.com', 80)
+2018-06-07 07:29:43,376  acrawler 90 Acrawler DEBUG:  page download complete! url:'http://c.youdao.com/dict/activity/pronPrefTest/index.html?keyfrom=dict2.index'
+2018-06-07 07:29:43,379  acrawler 196 Acrawler DEBUG:  page href link,will download://shared.ydstatic.com/js/zepto/1.1.6.js
+2018-06-07 07:29:43,382  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.com//shared.ydstatic.com/js/zepto/1.1.6.js
+2018-06-07 07:29:43,383  acrawler 196 Acrawler DEBUG:  page href link,will download://shared.ydstatic.com/js/ydk/ydk-1.4.4-min.js
+2018-06-07 07:29:43,391  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.com//shared.ydstatic.com/js/ydk/ydk-1.4.4-min.js
+2018-06-07 07:29:43,392  acrawler 196 Acrawler DEBUG:  page href link,will download:http://shared.ydstatic.com/js/console/1.1.0.js
+2018-06-07 07:29:43,397  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://shared.ydstatic.com/js/console/1.1.0.js
+2018-06-07 07:29:43,398  acrawler 196 Acrawler DEBUG:  page href link,will download:index.js
+2018-06-07 07:29:43,403  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://c.youdao.comindex.js
+2018-06-07 07:29:43,404  acrawler 196 Acrawler DEBUG:  page href link,will download:http://shared.ydstatic.com/js/rlog/v1.js
+2018-06-07 07:29:43,418  filedownload 33 Acrawler DEBUG:  start download pageï¼š http://shared.ydstatic.com/js/rlog/v1.js
+2018-06-07 07:29:43,566  filedownload 36 Acrawler WARNING:  url not download http://c.youdao.com//shared.ydstatic.com/js/zepto/1.1.6.js
+2018-06-07 07:29:43,597  filedownload 36 Acrawler WARNING:  url not download http://c.youdao.com//shared.ydstatic.com/js/ydk/ydk-1.4.4-min.js
+2018-06-07 07:30:04,444  filedownload 41 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-06-07 07:30:04,445  setting 23 Acrawler ERROR:  [WinError 10060] ç”±äºè¿æ¥æ–¹åœ¨ä¸€æ®µæ—¶é—´åæ²¡æœ‰æ­£ç¡®ç­”å¤æˆ–è¿æ¥çš„ä¸»æœºæ²¡æœ‰ååº”ï¼Œè¿æ¥å°è¯•å¤±è´¥ã€‚
+2018-06-07 07:30:04,445  setting 26 Acrawler ERROR:  line: 34 file: C:\Users\belief\Desktop\Mr.S\GitHub\Infinity_crawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, 'ç”±äºè¿æ¥æ–¹åœ¨ä¸€æ®µæ—¶é—´åæ²¡æœ‰æ­£ç¡®ç­”å¤æˆ–è¿æ¥çš„ä¸»æœºæ²¡æœ‰ååº”ï¼Œè¿æ¥å°è¯•å¤±è´¥ã€‚', None, 10060, None)}
