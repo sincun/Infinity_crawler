@@ -48,10 +48,10 @@ class crawler(object):
         #    if matched.group(1) == 'https':
         #            port = 443
                     
-        print(self.port)
-        print(self.host)
+        #print(self.port)
+        #print(self.host)
         address = (self.host,self.port)
-        print(address)
+        LOGGER.debug(address)
         sock = socket()
         sock.settimeout(6)
         try:
@@ -86,7 +86,11 @@ class crawler(object):
                 recvdata += chunk
                 chunk = sock.recv(4096)
             else:
-                LOGGER.error("chunk is None ,sock will close!{0}".format(sock))
+                if recvdata:
+                    LOGGER.debug("page download complete! url:'{0}'".format(self.url))
+                else:
+                    LOGGER.error("chunk is None ,sock will close!{0}".format(sock))
+                    LOGGER.error("failed page content ,url is '{0}'".format(self.url))
                 sock.close()
                 break
         #print('data',recvdata)
@@ -189,7 +193,7 @@ class crawler(object):
             else:
                 self.sitearry.add(fullhref)
             
-            LOGGER.debug('page herf link,will download',href)
+            LOGGER.debug('page href link,will download:{0}'.format(href))
             path = self.fetchfileurl('webpage',href)
 
             #print('path',path)

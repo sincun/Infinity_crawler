@@ -4,7 +4,7 @@ import sys
 
 LOGGER = logging.getLogger("Acrawler")
 _formatter = logging.Formatter('%(asctime)s  %(module)s %(lineno)s %(name)s %(levelname)s:  %(message)s')
-_file_handler = logging.FileHandler('acrawler.log')
+_file_handler = logging.FileHandler('acrawler.log',encoding='utf-8')
 _file_handler.setFormatter(_formatter)
 _console_handler = logging.StreamHandler(sys.stdout)
 _console_handler.setFormatter(_formatter)
