@@ -110,3 +110,21 @@
 2018-06-04 07:13:18,764  acrawler 60 Acrawler WARNING:  acrawler url connnect timeout,('www.google.com', 80)
 2018-06-04 07:13:18,765  setting 26 Acrawler ERROR:  line: 58 file: C:/Users/belief/Desktop/Mr.S/Script/Python/acrawler/acrawler.py ExceptName: timeout dictMessage: {}
 2018-06-04 07:15:08,897  acrawler 32 Acrawler WARNING:  url format error 'htp://www.google.com'
+2018-06-06 21:07:28,094  acrawler 60 Acrawler WARNING:  acrawler url connnect timeout,('www.google.com', 80)
+2018-06-06 21:07:28,223  setting 26 Acrawler ERROR:  line: 58 file: C:/Users/belief/Desktop/Mr.S/GitHub/Infinity_crawler/acrawler.py ExceptName: timeout dictMessage: {}
+2018-06-06 21:09:13,527  filedownload 40 Acrawler ERROR:  url open failed 'http://c.youdao.comindex.js'
+2018-06-06 21:09:13,528  setting 23 Acrawler ERROR:  [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+2018-06-06 21:09:13,546  setting 26 Acrawler ERROR:  line: 33 file: C:\Users\belief\Desktop\Mr.S\GitHub\Infinity_crawler\filedownload.py ExceptName: URLError dictMessage: {'reason': TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None)}
+2018-06-06 22:08:35,707  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=740, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 64389), raddr=('211.147.1.202', 80)>
+2018-06-06 22:14:30,454  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=676, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 49956), raddr=('211.147.1.202', 80)>
+2018-06-06 22:16:54,853  launchCapture 42 Acrawler DEBUG:  1
+2018-06-06 22:16:55,354  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=724, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 50493), raddr=('211.147.1.202', 80)>
+2018-06-06 22:19:46,208  launchCapture 43 Acrawler DEBUG:  1
+2018-06-06 22:19:46,479  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=748, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 51391), raddr=('211.147.1.202', 80)>
+2018-06-06 22:19:46,480  launchCapture 21 Acrawler DEBUG:  analysis result set()
+2018-06-06 22:19:57,936  launchCapture 43 Acrawler DEBUG:  1
+2018-06-06 22:19:58,220  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=688, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 51440), raddr=('211.147.1.202', 80)>
+2018-06-06 22:19:58,221  launchCapture 21 Acrawler DEBUG:  analysis result set()
+2018-06-06 22:20:43,805  launchCapture 43 Acrawler DEBUG:  1
+2018-06-06 22:20:43,899  acrawler 89 Acrawler ERROR:  chunk is None ,sock will close!<socket.socket fd=728, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.1.106', 51658), raddr=('211.147.1.202', 80)>
+2018-06-06 22:20:43,901  launchCapture 21 Acrawler DEBUG:  analysis result set()

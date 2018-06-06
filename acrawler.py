@@ -69,8 +69,8 @@ class crawler(object):
         try:
             sock.send(request.encode())
         except  Exception as e:
-            print("url error or host is change or ",userAgent)
-            print(e)
+            LOGGER.error("url error or host is change or ",userAgent)
+            LOGGER.error(e)
 
         data = self.foreach(sock)
 
@@ -86,14 +86,14 @@ class crawler(object):
                 recvdata += chunk
                 chunk = sock.recv(4096)
             else:
-                print("chunk is None ,sock will close!")
+                LOGGER.error("chunk is None ,sock will close!{0}".format(sock))
                 sock.close()
                 break
         #print('data',recvdata)
         try:
             recvdata = recvdata.decode()
         except UnicodeDecodeError as ude:
-            print("Unicode Decode to utf8 Error,",ude)
+            LOGGER.error("Unicode Decode to utf8 Error,",ude)
             return None
         return recvdata
 
@@ -111,7 +111,7 @@ class crawler(object):
     def analysis(self):
         
         if not self.host:
-            print('host is analysis failed!')
+            LOGGER.error('host is analysis failed!url is error')
             return set()
         data = self.buildsock()
         #超链接，表单，脚本，图片
@@ -122,7 +122,7 @@ class crawler(object):
         if data:
             matched = category.findall(data)
         else:
-            print("Fetching result is None")
+            LOGGER.error("Fetching result is None,will exit fetch page")
             return set()
         #print('a',matched[1])
         #mlock = threading.Lock()
@@ -189,7 +189,7 @@ class crawler(object):
             else:
                 self.sitearry.add(fullhref)
             
-            print('ophref',href)
+            LOGGER.debug('page herf link,will download',href)
             path = self.fetchfileurl('webpage',href)
 
             #print('path',path)
@@ -208,9 +208,9 @@ class crawler(object):
             #self.analysis(fullhref)
             #pass
             
-        except TypeError:
-            print("url is error",href)
-
+        except TypeError as e:
+            LOGGER.error("url is error",href)
+            LOGGER.error(e)
         return 0
 
     def optable(self,table):
@@ -272,8 +272,8 @@ class crawler(object):
 
 if __name__ == '__main__':
 
-    #url = 'http://c.youdao.com/dict/activity/pronPrefTest/index.html?keyfrom=dict2.index'
-    url = 'http://www.google.com'
+    url = 'http://c.youdao.com/dict/activity/pronPrefTest/index.html?keyfrom=dict2.index'
+    #url = 'http://www.google.com'
     crawler = crawler(url)
     r = crawler.analysis()
     print(r)

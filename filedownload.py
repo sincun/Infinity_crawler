@@ -30,12 +30,13 @@ class fileDownload(threading.Thread):
         #print('downurl:',downurl)
         #print('filepat',fileurl)
         try:
+            LOGGER.debug("start download page： {0}".format(downurl))
             urllib.request.urlretrieve(downurl,fileurl,self.schedule)
         except urllib.error.HTTPError:
-            print("url not download %s\n"% downurl)
+            LOGGER.warn("url not download {0}".format(downurl))
         except PermissionError:
             urlstrs = 'fileurl:'+fileurl+'  ,downurl:'+downurl
-            print(urlstrs+'(PermissionError\n)')
+            LOGGER.warn(urlstrs+'(PermissionError)')
         except:
             LOGGER.error("url open failed '{0}'".format(downurl))
             recodeExcept(*sys.exc_info())

@@ -3,7 +3,8 @@ import threading
 import multiprocessing
 from queue import Queue
 import acrawler
-import setting
+from setting import *
+
 
 
 urlQueue = Queue(500)
@@ -17,6 +18,8 @@ class multiprocessresult(threading.Thread):
 
     def run(self):
         result = self.ins.get(timeout=10)
+
+        LOGGER.debug("analysis result {0}".format(result))
         tlock.acquire()
         for perurl in result:
             urlQueue.put(perurl)
@@ -31,20 +34,21 @@ class LaunchCapture(object):
     """launching acrawler class"""
     def __init__(self):
         self.pool = multiprocessing.Pool(processes=4)
-        pass
 
 #    @staticmethod
     def main(self,url=None):
         if url:
             urlQueue.put(url)
 
-        while urlQueue != 0 or ISALIVE:
+        LOGGER.debug(urlQueue.qsize())
+        while urlQueue.qsize() != 0 or ISALIVE:
             useUrl = urlQueue.get(timeout=10)
             crawler = acrawler.crawler(useUrl)
-            multprocessResult = self.pool.apply_async(crawler.analysis,(useUrl,))
+            multprocessResult = self.pool.apply_async(crawler.analysis)
             addQueue = multiprocessresult(multprocessResult)
             ISALIVE.append(addQueue)
             addQueue.start()
+            addQueue.join()
 
         self.pool.close()
         self.pool.join()
@@ -56,6 +60,7 @@ class LaunchCapture(object):
 
     def excuteAcrawler(self,url):
         """if url is specified ,running it,use multiprocessing"""
+        pass
 
 if __name__ ==  '__main__':
     url = 'http://www.bwlc.gov.cn/datacenter/ssq/jbzs_sanf.html?id=2'
