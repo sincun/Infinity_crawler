@@ -1,29 +1,35 @@
 import random
 import threading
+import traceback
 import multiprocessing
 from queue import Queue
 import acrawler
 from setting import *
 
 
-
 urlQueue = Queue(500)
 ISALIVE = []
 tlock = threading.Lock()
-class multiprocessresult(threading.Thread):
+class multiProcessResultThread(threading.Thread):
     def __init__(self,processins):
         #threading.Thread.__init__(self)
-        super(multiprocessresult,self).__init__()
+        super(multiProcessResultThread,self).__init__()
         self.ins = processins
 
     def run(self):
-        result = self.ins.get(timeout=10)
+        try:
+            result = self.ins.get(timeout=10)
 
-        LOGGER.debug("analysis result {0}".format(result))
-        tlock.acquire()
-        for perurl in result:
-            urlQueue.put(perurl)
-        tlock.release()
+            LOGGER.debug("analysis result {0}".format(result))
+            tlock.acquire()
+            for perurl in result:
+                urlQueue.put(perurl)
+            tlock.release()
+
+        except:
+            recodeExcept(*sys.exc_info())
+            LOGGER.error(traceback.format_exc())
+            LOGGER.error("Except EOF")
         ISALIVE.remove(self)
 
     def getresult(self):
@@ -44,9 +50,15 @@ class LaunchCapture(object):
         while urlQueue.qsize() != 0 or ISALIVE:
             useUrl = urlQueue.get(timeout=10)
             crawler = acrawler.crawler(useUrl)
+            #you could rewirte analysisHandler method,if you need.‘analysisHandler' method is major handle web page.
+            # get what you want,but must reutrn  a python "set()" which  name is referred to slef.webPage ,it's con-
+            # tain web page from last analysis url."set()" will be as next url by analysis.
+            #
+            #ophref method function is downurl,and add set().
             multprocessResult = self.pool.apply_async(crawler.analysis)
-            addQueue = multiprocessresult(multprocessResult)
+            addQueue = multiProcessResultThread(multprocessResult)
             ISALIVE.append(addQueue)
+
             addQueue.start()
             addQueue.join()
 
@@ -63,6 +75,6 @@ class LaunchCapture(object):
         pass
 
 if __name__ ==  '__main__':
-    url = 'http://www.bwlc.gov.cn/datacenter/ssq/jbzs_sanf.html?id=2'
+    url = 'https://blog.csdn.net/sicofield/article/details/8635351'
     launching = LaunchCapture()
     launching.main(url)

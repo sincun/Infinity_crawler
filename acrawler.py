@@ -1,11 +1,12 @@
-import socket
-import os,re
-from setting import *
 import random
+import socket
+import traceback
 from socket import *
-import threading
+
 import filedownload
-import csv
+from setting import *
+
+
 #
 #
 #author: Mr.S
@@ -59,6 +60,8 @@ class crawler(object):
         except :
             LOGGER.warn("acrawler url connnect timeout,{0}".format(address))
             recodeExcept(*sys.exc_info())
+            LOGGER.error(traceback.format_exc())
+            LOGGER.error("Except EOF")
             return None
 
         #request =  'GET {} HTTP/1.0\r\nHost:{}\r\n\r\n '.format(host,url)
@@ -87,7 +90,7 @@ class crawler(object):
                 chunk = sock.recv(4096)
             else:
                 if recvdata:
-                    LOGGER.debug("page download complete! url:'{0}'".format(self.url))
+                    LOGGER.debug("fetcht page data! url:'{0}'".format(self.url))
                 else:
                     LOGGER.error("chunk is None ,sock will close!{0}".format(sock))
                     LOGGER.error("failed page content ,url is '{0}'".format(self.url))
@@ -110,32 +113,27 @@ class crawler(object):
             website = self.website
         #print('handle',website,"link",link)
         return website+link
-    
-# analysis url
-    def analysis(self):
-        
-        if not self.host:
-            LOGGER.error('host is analysis failed!url is error')
-            return set()
-        data = self.buildsock()
-        #超链接，表单，脚本，图片
-        #如果是绝对路径，直接使用绝对路径，否则进行拼接：
-        #/js/plugin.js,拼接完就是http://www.bwlc.gov.cn/js/plugin.js
+
+
+    def analysisHandler(self,pagedata):
+        # 超链接，表单，脚本，图片
+        # 如果是绝对路径，直接使用绝对路径，否则进行拼接：
+        # /js/plugin.js,拼接完就是http://www.bwlc.gov.cn/js/plugin.js
         #
         category = re.compile(r'<a href="(.*?)"|<tbody>(.*?)</tbody>|<script.*?src="(.*?)"|<img src="(.*?)"')
-        if data:
-            matched = category.findall(data)
+        if pagedata:
+            matched = category.findall(pagedata)
         else:
             LOGGER.error("Fetching result is None,will exit fetch page")
             return set()
-        #print('a',matched[1])
-        #mlock = threading.Lock()
-        #下载页面自身，不计入待下载集合中
-        #self.ophref(url,1)
+        # print('a',matched[1])
+        # mlock = threading.Lock()
+        # 下载页面自身，不计入待下载集合中
+        # self.ophref(url,1)
         for i in matched:
-            #print(i)
+            # print(i)
             if i[0]:
-                #print(i[0])
+                # print(i[0])
                 self.ophref(i[0])
 
             if i[1]:
@@ -146,6 +144,15 @@ class crawler(object):
 
             if i[3]:
                 self.opimgs(self.fullurl(i[3]))
+# analysis url
+    def analysis(self):
+        
+        if not self.host:
+            LOGGER.error('host is analysis failed!url is error')
+            return set()
+        data = self.buildsock()
+        self.analysisHandler(data)
+
         return self.webPage
 
         #--根据不同类型建立进程池，在进程池中分别建立多线程处理每种结果类型--

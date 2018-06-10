@@ -1,8 +1,9 @@
 import os
 import urllib
+import traceback
 from setting import *
 from urllib import request
-from urllib.request import urlopen
+#from urllib.request import urlopen
 
 
 class fileDownload(threading.Thread):
@@ -31,6 +32,7 @@ class fileDownload(threading.Thread):
         #print('filepat',fileurl)
         try:
             LOGGER.debug("start download page： {0}".format(downurl))
+            LOGGER.debug("download path '{0}'".format(fileurl))
             urllib.request.urlretrieve(downurl,fileurl,self.schedule)
         except urllib.error.HTTPError:
             LOGGER.warn("url not download {0}".format(downurl))
@@ -40,6 +42,8 @@ class fileDownload(threading.Thread):
         except:
             LOGGER.error("url open failed '{0}'".format(downurl))
             recodeExcept(*sys.exc_info())
+            LOGGER.error(traceback.format_exc())
+            LOGGER.error("Except EOF")
 
     def schedule(self,blocknum,blocksize,totalsize):
         """
