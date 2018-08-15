@@ -45,11 +45,11 @@ class LaunchCapture(object):
     def main(self,url=None):
         if url:
             urlQueue.put(url)
-
+        useUrl = urlQueue.get(timeout=10)
+		crawler = acrawler.crawler(useUrl)
+        self.downloadurlPro = multiprocessing.Process(target=acrawler.crawler)
         LOGGER.debug(urlQueue.qsize())
         while urlQueue.qsize() != 0 or ISALIVE:
-            useUrl = urlQueue.get(timeout=10)
-            crawler = acrawler.crawler(useUrl)
             #you could rewirte analysisHandler method,if you need.‘analysisHandler' method is major handle web page.
             # get what you want,but must reutrn  a python "set()" which  name is referred to slef.webPage ,it's con-
             # tain web page from last analysis url."set()" will be as next url by analysis.
