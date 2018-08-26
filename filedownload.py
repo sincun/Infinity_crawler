@@ -1,4 +1,5 @@
 import os
+import ssl
 import urllib
 import traceback
 from setting import *
@@ -13,6 +14,13 @@ class fileDownload(threading.Thread):
         threading.Thread.__init__(self)
         #结尾没有是/或？号，表示目录下有主页，人为给首页index.html
         partern = re.compile(r'/\??$')
+        try:
+            self.headers = re.match(r'^(http[s]?:)',url).group(1)
+        except:
+            LOGGER.error("url format error '{0}'".format(url))
+            recodeExcept(*sys.exc_info())
+            LOGGER.error(traceback.format_exc())
+            LOGGER.error("Except EOF")
         self.__downurl = url
         TorF = partern.search(url)
         if TorF:
@@ -24,7 +32,7 @@ class fileDownload(threading.Thread):
         self.lock = THREADINGLOCK
         self.mkdir(filepath)
 
-
+    ssl._create_default_https_context = ssl._create_unverified_context
     def run(self):
         fileurl = self.__filepath
         downurl = self.__downurl
@@ -34,8 +42,18 @@ class fileDownload(threading.Thread):
             LOGGER.debug("start download page： {0}".format(downurl))
             LOGGER.debug("download path '{0}'".format(fileurl))
             urllib.request.urlretrieve(downurl,fileurl,self.schedule)
-        except urllib.error.HTTPError:
+            #添加待解析页面到队列
+            THREADINGLOCK.acquire()
+            ANALY_QUEUE.put([self.headers,fileurl])
+            THREADINGLOCK.release()
+        except urllib.error.HTTPError as e:
             LOGGER.warn("url not download {0}".format(downurl))
+            LOGGER.warn(e)
+        except urllib.error.URLError:
+            LOGGER.error("url open failed '{0}'".format(downurl))
+            recodeExcept(*sys.exc_info())
+            LOGGER.error(traceback.format_exc())
+            LOGGER.error("Except EOF")
         except PermissionError:
             urlstrs = 'fileurl:'+fileurl+'  ,downurl:'+downurl
             LOGGER.warn(urlstrs+'(PermissionError)')

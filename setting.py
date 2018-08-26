@@ -1,4 +1,5 @@
 import re,threading
+from queue import Queue
 import logging
 import sys
 
@@ -12,6 +13,7 @@ LOGGER.addHandler(_file_handler)
 LOGGER.addHandler(_console_handler)
 LOGGER.setLevel(logging.DEBUG)
 
+#@staticmethod
 def recodeExcept(etype,evalue,etraceback):
 
     _err_lineno = etraceback.tb_lineno
@@ -29,6 +31,8 @@ def recodeExcept(etype,evalue,etraceback):
 THREADINGLOCK = threading.Lock()
 THREADINGRLOCK = threading.RLock()
 COOKIES_ENABLED = False
+PROXY_ADDR = "61.163.39.70:9999"
+WEIXIN_UA = "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12A365 MicroMessenger/5.4.1 NetType/WIFI"
 USER_AGENT = ['Mozilla/5.0(Windows;U;WindowsNT6.1;en-us)AppleWebKit/534.50(KHTML,likeGecko)Version/5.1Safari/534.50',
               'Mozilla/5.0(compatible;MSIE9.0;WindowsNT6.1;Trident/5.0',
               'Mozilla/4.0(compatible;MSIE8.0;WindowsNT6.0;Trident/4.0',
@@ -40,7 +44,55 @@ USER_AGENT = ['Mozilla/5.0(Windows;U;WindowsNT6.1;en-us)AppleWebKit/534.50(KHTML
               'Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;Trident/4.0;TencentTraveler4.0;.NETCLR2.0.50727)',
               'Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;Maxthon2.0)',
               'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.3']
+
+DN_QUEUE = Queue(500)
+ANALY_QUEUE = Queue(500)
 #cut suffix
 PARTERN = re.compile(r'^([^\?]*)[\?]?')
 STATICPAGE = ('htm','html','shtml','xml')
 DYNAMICPAGE = ('aspx','asp','jsp','php','perl','cgi')
+EXCLUDEPAGE = ("js","css")
+
+#splitcontent class
+NON_ENDLABLE = ('link','meta','img','base','basefont','br','col','embed','frame','hr','input','keygen','param','source','wbr')
+#http global attribute
+#all global attribute 'accesskey','class','dir','id','lang','style','tabindex','title','contenteditable','contextmenu','data-*','draggable',
+#               'dropzone','hidden','spellcheck','translate'
+GLOBAL_ATTRIBUTE = ('lang','data-*')
+DOWNLOAD_ATTRIBUTE = ('href','src','poster')
+#http lable,and attribute
+#<a> lable attribute
+A_ATTRIBUTE = ('href')
+
+#<script> lable attributs
+SCRIPT_ATTRIBUTE = ('src')
+
+#<img> lable attributes
+IMG_ATTRIBUTE = ('src')
+
+#<video> lable attributes
+VIDEO_ATTRIBUTE = ('poster','src')
+
+#<source> lable attributes
+SOURCE_ATTRIBUTE = ('src')
+
+#<link> lable attributes
+LINK_ATTRIBUTE = ('href')
+
+#<table> lable attributes
+TABLE_ATTRIBUTE = ()
+
+#<tr> lable attributes
+TR_ATTRIBUTE = ()
+
+#<td> lable attributes
+TD_ATTRIBUTE = ()
+
+#<textarea > lable attributes
+TEXTAREA_ATTRIBUTE = ()
+
+#<p> lable attributes
+P_ATTRIBUTE = ()
+
+#<h> lable attributes
+H_ATTRIBUTE = ()

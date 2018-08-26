@@ -17,44 +17,14 @@ from splitcontent import *
 
 class crawler(object):
 	
-	def __init__(self, url):
-		
-		self.webPage = set()
-		self.partition = re.compile(r'^(http[s]?)://([^/]*)')
-		matched = self.partition.match(url)
-		self.url = url
-		self.port = 80
-		self.heads = 'http:'
-		
-		if matched:
-			# host = matched.group(0)[:-1]
-			self.host = matched.group(2)
-			self.website = matched.group(0)
-			if matched.group(1) == 'https':
-				self.port = 443
-				self.heads = 'https:'
-		else:
-			LOGGER.warn("url format error '{0}'".format(url))
-			sys.exit(1)
-		
-		host1 = self.website + '#'
-		host2 = self.website + 'javascript:;'
-		self.sitearry = set([host1, host2])
+	def __init__(self, statistics=0):
+
+		self.sitearry = set()
 	
 	# ***************************had been replace by buildOpenUrl*********************
+	#socket connnects
 	def buildsock(self):
-		
-		# partition = re.compile(r'^([a-z]+)://(.*?)/')
-		# matched = partition.match(url)
-		# if matched:
-		#    #host = matched.group(0)[:-1]
-		#    host = matched.group(2)
-		#    website = matched.group(0)
-		#    if matched.group(1) == 'https':
-		#            port = 443
-		
-		# print(self.port)
-		# print(self.host)
+
 		address = (self.host, self.port)
 		LOGGER.debug(address)
 		sock = socket()
@@ -82,7 +52,7 @@ class crawler(object):
 		data = self.foreach(sock)
 		
 		return data
-	
+	#Outdated methods，use socket fetch page data
 	def foreach(self, sock):
 		
 		recvdata = b''
@@ -108,7 +78,7 @@ class crawler(object):
 			return None
 		return recvdata
 	
-	##************************above method will not by used************************
+	##************************，above method will not by used************************
 	def proxy_acs(self, proxy_addr=None, cookies=None):
 		if proxy_addr:
 			proxy = urllib.request.ProxyHandler({'http': proxy_addr})
@@ -125,13 +95,13 @@ class crawler(object):
 		else:
 			return None
 		urllib.request.install_opener(opener)
-	
+	#有cookies时使用
 	def cookie_use(self):
 		auth = {'username': 'zhangsan', 'password': '123456'}
 		postdata = urllib.parse.urlencode(auth).encode()
 		
 		return postdata
-	
+	#构建urlopen，urlopen方式暂时未使用，目前直接下载页面到本地再解析
 	def buildOpenUrl(self, proxy_addr=None, cookies=None, post=None):
 		# User-Agent需要做成随机的防止封禁
 		randomNum = random.randint(0, 9)
@@ -156,7 +126,8 @@ class crawler(object):
 			LOGGER.error("Except EOF")
 		
 		return response
-	
+
+	#当前路径转换为绝对路径
 	def fullurl(self, link):
 		#
 		link = link.strip('"')
@@ -168,65 +139,48 @@ class crawler(object):
 			website = self.website
 		# print('handle',website,"link",link)
 		return website + link
-	
-	def aHrefHandler(self, line):
-		pass
-	
-	def analysisHandler(self, pagedata):
-		# 超链接，表单，脚本，图片
-		# 如果是绝对路径，直接使用绝对路径，否则进行拼接：
-		# /js/plugin.js,拼接完就是http://www.bwlc.gov.cn/js/plugin.js
-		#
-		splitcontent = splitContent()
-		for line in pagedata.readlines():
-			attribute_split = splitcontent.propertySplit(line)
-			for atb in attribute_split:
-				pass
-		
-		# /*
-		category = re.compile(r'<a .* href="(.*?)"|<tbody>(.*?)</tbody>|<script.*?src="(.*?)"|<img src="(.*?)"')
-		LOGGER.debug("page size: {0}".format(pagedata))
-		if pagedata:
-			matched = category.findall(pagedata)
-		else:
-			LOGGER.error("Fetching result is None,will exit fetch page")
-			return set()
-		
-		LOGGER.debug("data analysis: {0}".format(matched))
-		# 下载页面自身，不计入待下载集合中
-		# self.ophref(url,1)
-		for i in matched:
-			# print(i)
-			LOGGER.debug("start handler sub url link")
-			if i[0]:
-				# print(i[0])
-				self.ophref(i[0])
-			
-			if i[1]:
-				self.optable(self.fullurl(i[1]))
-			
-			if i[2]:
-				self.opscript(i[2])
-			
-			if i[3]:
-				self.opimgs(self.fullurl(i[3]))
-		
-		if not matched:
-			LOGGER.warn("page is not sub url link")
-			self.ophref(self.url, pagetype=1)
-	
+
 	# */
-	
 	# analysis url
-	def analysis(self):
-		
-		if not self.host:
-			LOGGER.error('host is analysis failed!url is error')
-			return set()
-		data = self.buildOpenUrl()
-		self.analysisHandler(data)
-		
-		return self.webPage
+	def analysis(self,dnurl):
+		"""
+
+		:param dnurl:
+		:return:
+		"""
+		#限制和记录下载解析多少个页面
+		urlnum = 0
+		threadlist = []
+
+		while True:
+			if DN_QUEUE.qsize() != 0:
+				currenturl = DN_QUEUE.get(120)
+			elif isinstance(dnurl,list) and dnurl:
+				currenturl = dnurl.pop()
+			elif dnurl:
+				currenturl = dnurl
+			else:
+				break
+
+			access_url = re.sub(r'(#.*$)', '', dnurl)
+
+			if re.search(r'javascript:',dnurl):
+				continue
+			if dnurl in self.sitearry:
+				continue
+
+			path = self.fetchfileurl('webpage', currenturl)
+			download = filedownload.fileDownload(currenturl, path)
+			download.start()
+			threadlist.append(download)
+
+			self.sitearry.add(access_url)
+			urlnum += 1
+			if urlnum == self.statistics:
+				break
+		for t in threadlist:
+				t.join()
+
 	
 	# --根据不同类型建立进程池，在进程池中分别建立多线程处理每种结果类型--
 	
@@ -240,7 +194,7 @@ class crawler(object):
 		if ifFullurl:
 			mkpath = ifFullurl.group(1)
 		
-		fullfilepath = [types, self.host]
+		fullfilepath = [types]
 		
 		filename = mkpath.split('/')
 		for p in filename[:-1]:
@@ -299,42 +253,8 @@ class crawler(object):
 			LOGGER.error("url is error", href)
 			LOGGER.error(e)
 		return 0
-	
-	def optable(self, table):
-		# table中可能有链接或者图片，得分开对待
-		print('optable', table)
-		pass
-	
-	def opscript(self, script):
-		# 同href，超链接
-		# print('opscript',script)
-		self.ophref(script)
-	
-	def opimgs(self, imgs):
-		# 图片直接下载即可
-		dirs = 'imges/' + self.host
-	
-	# names = imgs.split('/')[-1]
-	
-	# download = filedownload.fileDownload(imgs,dirs)
-	# download.start()
-	# path = dirs+'/'+names
-	# self.mkdir(dirs)
-	
-	# print('opimgs',imgs)
-	
-	def opvidio(self, video):
-		# 视频，直接下载即可
-		dirs = 'video'
-		
-		# download = filedownload.fileDownload(video,dirs)
-		# download.start()
-		# names = imgs.split('/')[-1]
-		# path = dirs+'/'+names
-		# self.mkdir(dirs)
-		
-		print('opvidio', video)
-	
+
+
 	def mkdir(self, dirs):
 		
 		try:
