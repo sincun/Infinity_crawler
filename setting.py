@@ -47,6 +47,8 @@ USER_AGENT = ['Mozilla/5.0(Windows;U;WindowsNT6.1;en-us)AppleWebKit/534.50(KHTML
 
 DN_QUEUE = Queue(500)
 ANALY_QUEUE = Queue(500)
+#之前已经处理过的url
+USEURL = set()
 #cut suffix
 PARTERN = re.compile(r'^([^\?]*)[\?]?')
 STATICPAGE = ('htm','html','shtml','xml')

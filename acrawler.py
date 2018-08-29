@@ -151,6 +151,7 @@ class crawler(object):
 		#限制和记录下载解析多少个页面
 		urlnum = 0
 		threadlist = []
+		fetchsuffix = re.compile(r'\S+\.(\w+)$')
 
 		while True:
 			if DN_QUEUE.qsize() != 0:
@@ -159,6 +160,7 @@ class crawler(object):
 				currenturl = dnurl.pop()
 			elif dnurl:
 				currenturl = dnurl
+			#如果都不存在url了，可以在这里加入随机生成url的代码
 			else:
 				break
 
@@ -168,9 +170,28 @@ class crawler(object):
 				continue
 			if dnurl in self.sitearry:
 				continue
-
+			#如果url之前已经解析则跳过
+			if access_url in USEURL:
+				continue
+			USEURL.add(access_url)
+			analyhtml = True
 			path = self.fetchfileurl('webpage', currenturl)
-			download = filedownload.fileDownload(currenturl, path)
+			pagename = path[-1]
+			matchsuffix = fetchsuffix.search(pagename)
+			pagesuffix = pagename
+			if matchsuffix:
+				pagesuffix = matchsuffix.group(1)
+			if pagesuffix in STATICPAGE:
+				dynamichtml = False
+			elif pagesuffix in DYNAMICPAGE:
+				dynamichtml = True
+			elif pagesuffix == pagename:
+				dynamichtml = False
+			else:
+				analyhtml = False
+
+
+			download = filedownload.fileDownload(currenturl, path,dynamic=dynamichtml,handler=analyhtml)
 			download.start()
 			threadlist.append(download)
 

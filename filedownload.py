@@ -9,7 +9,7 @@ from urllib import request
 
 class fileDownload(threading.Thread):
 
-    def __init__(self,url,filepath):
+    def __init__(self,url,filepath,dynamic=False,handler=True):
         
         threading.Thread.__init__(self)
         #结尾没有是/或？号，表示目录下有主页，人为给首页index.html
@@ -28,6 +28,8 @@ class fileDownload(threading.Thread):
         else:
             self.__filepath = '/'.join(filepath)
 
+        self.__dynamic_page = dynamic
+        self.__handler_flag = handler
         self.__filename = filepath.pop(-1)
         self.lock = THREADINGLOCK
         self.mkdir(filepath)
@@ -43,9 +45,10 @@ class fileDownload(threading.Thread):
             LOGGER.debug("download path '{0}'".format(fileurl))
             urllib.request.urlretrieve(downurl,fileurl,self.schedule)
             #添加待解析页面到队列
-            THREADINGLOCK.acquire()
-            ANALY_QUEUE.put([self.headers,fileurl])
-            THREADINGLOCK.release()
+            if self.__handler_flag:
+                THREADINGLOCK.acquire()
+                ANALY_QUEUE.put([self.headers,fileurl])
+                THREADINGLOCK.release()
         except urllib.error.HTTPError as e:
             LOGGER.warn("url not download {0}".format(downurl))
             LOGGER.warn(e)
@@ -62,6 +65,7 @@ class fileDownload(threading.Thread):
             recodeExcept(*sys.exc_info())
             LOGGER.error(traceback.format_exc())
             LOGGER.error("Except EOF")
+
 
     def schedule(self,blocknum,blocksize,totalsize):
         """

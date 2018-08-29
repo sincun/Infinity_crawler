@@ -15,16 +15,18 @@ class multiProcessResultThread(threading.Thread):
 		#threading.Thread.__init__(self)
 		super(multiProcessResultThread,self).__init__()
 		self.ins = processins
+		self.result = ()
 
 	def run(self):
 		try:
-			result = self.ins.get(timeout=10)
+			self.result = self.ins.get(timeout=20)
 
-			LOGGER.debug("analysis result {0}".format(result))
-			tlock.acquire()
-			for perurl in result:
-				DN_QUEUE.put(perurl)
-			tlock.release()
+			LOGGER.debug("analysis result {0}".format(self.result))
+			#队列的添加移到解析文件的时候增加
+			#tlock.acquire()
+			#for perurl in result:
+			#	DN_QUEUE.put(perurl)
+			#tlock.release()
 
 		except:
 			recodeExcept(*sys.exc_info())
@@ -33,7 +35,7 @@ class multiProcessResultThread(threading.Thread):
 		ISALIVE.remove(self)
 
 	def getresult(self):
-		return DN_QUEUE
+		return self.result
 
 
 class LaunchCapture(object):
@@ -47,7 +49,7 @@ class LaunchCapture(object):
 			DN_QUEUE.put(url)
 		useUrl = DN_QUEUE.get(timeout=120)
 		crawler = acrawler.crawler(statistics=3)
-		downloadurlPro = multiprocessing.Process(crawler.analysis,target=(useUrl,))
+		downloadurlPro = multiprocessing.Process(target=crawler.analysis,args=(useUrl,))
 
 		downloadurlPro.start()
 
