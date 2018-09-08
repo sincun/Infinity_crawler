@@ -1,5 +1,5 @@
 import re,threading
-from queue import Queue
+#from queue import Queue
 import logging
 import sys
 
@@ -45,8 +45,7 @@ USER_AGENT = ['Mozilla/5.0(Windows;U;WindowsNT6.1;en-us)AppleWebKit/534.50(KHTML
               'Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;Maxthon2.0)',
               'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.3']
 
-DN_QUEUE = Queue(500)
-ANALY_QUEUE = Queue(500)
+
 #之前已经处理过的url
 USEURL = set()
 #cut suffix

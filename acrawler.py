@@ -20,6 +20,7 @@ class crawler(object):
 	def __init__(self, statistics=0):
 
 		self.sitearry = set()
+		self.statistics = statistics
 	
 	# ***************************had been replace by buildOpenUrl*********************
 	#socket connnects
@@ -142,7 +143,7 @@ class crawler(object):
 
 	# */
 	# analysis url
-	def analysis(self,dnurl):
+	def analysis(self,dnurl,downqueue,analyqueue):
 		"""
 
 		:param dnurl:
@@ -152,23 +153,35 @@ class crawler(object):
 		urlnum = 0
 		threadlist = []
 		fetchsuffix = re.compile(r'\S+\.(\w+)$')
+		error_getcount = 0
 
 		while True:
-			if DN_QUEUE.qsize() != 0:
-				currenturl = DN_QUEUE.get(120)
-			elif isinstance(dnurl,list) and dnurl:
+
+			if isinstance(dnurl,list) and dnurl:
 				currenturl = dnurl.pop()
 			elif dnurl:
 				currenturl = dnurl
+				dnurl = None
 			#如果都不存在url了，可以在这里加入随机生成url的代码
 			else:
-				break
+				try:
+					currenturl = downqueue.get(10)
+				except:
+					LOGGER.warn("fetch download queue timeout")
+					recodeExcept(*sys.exc_info())
+					LOGGER.error(traceback.format_exc())
+					LOGGER.error("Except EOF")
+					error_getcount += 1
+					LOGGER.error("get download queue count {0}".format(error_getcount))
+					if error_getcount > 3:
+						break
+					continue
 
-			access_url = re.sub(r'(#.*$)', '', dnurl)
+			access_url = re.sub(r'(#.*$)', '', currenturl)
 
-			if re.search(r'javascript:',dnurl):
+			if re.search(r'javascript:',currenturl):
 				continue
-			if dnurl in self.sitearry:
+			if currenturl in self.sitearry:
 				continue
 			#如果url之前已经解析则跳过
 			if access_url in USEURL:
@@ -191,13 +204,15 @@ class crawler(object):
 				analyhtml = False
 
 
-			download = filedownload.fileDownload(currenturl, path,dynamic=dynamichtml,handler=analyhtml)
+			download = filedownload.fileDownload(currenturl, path,dynamic=dynamichtml,handler=analyhtml,addanalyqueue=analyqueue)
 			download.start()
 			threadlist.append(download)
 
 			self.sitearry.add(access_url)
 			urlnum += 1
 			if urlnum == self.statistics:
+				LOGGER.warn("download url  finsh,process exit")
+				LOGGER.debug("complate download url list (0)".format(self.sitearry))
 				break
 		for t in threadlist:
 				t.join()

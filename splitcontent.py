@@ -7,13 +7,16 @@ import json
 class splitContent():
 	"""handler html text or analogous text content"""
 	
-	def __init__(self):
+	def __init__(self,queuefunc):
 		# self.startSymbol = startSymbol
 		# self.endSymbol  = endSymbol
+		self.func = queuefunc
 		self.stopCode = []
 		self.scopeLable = ''
 		self.dataContent = {}
+		#标签中的属性
 		self.singleAttribute = ''
+		#存放标签列表，存放正在处理的标签，处理完成后从列表清除
 		self.s_LableList = []
 		self.htmlDict = {}
 		self.startParttern = re.compile(r'^\s*<(\w+)|>\s*<(\w+)')
@@ -27,7 +30,11 @@ class splitContent():
 		self.t_endLable = None
 		self.non_endLable = NON_ENDLABLE
 		self.joinattr = []
+		#判处处理的属性是注释或其他非标准内容
 		self.extraAttrSign = False
+		#注释
+		self.annotation_lable = None
+		#存放非标准内容
 		self.extraAttr = ""
 		# 统计处理标签个数
 		self.lableCount = 0
@@ -50,6 +57,10 @@ class splitContent():
 			t_attData = []
 			if atb == '<':
 				continue
+			elif atb == '<!--':
+				self.annotation_lable = True
+			elif atb == '--' and self.annotation_lable:
+				self.annotation_end = True
 			elif atb == '>' or atb == '/>':
 				
 				try:
@@ -58,14 +69,20 @@ class splitContent():
 						self.s_LableList.pop()
 					self.t_startLable = None
 				except:
-					if self.extraAttrSign:
+					if self.extraAttrSign or (self.annotation_lable and self.annotation_end):
 						LOGGER.error("write Lable extraAttr {0}".format(self.globalKey))
 						t_attData = self.mapDict(self.extraAttr + atb, keys="extraAttr")
 						self.gen_ExpectionDict(t_attData)
 						self.lableAttrRecord += 1
 						self.extraAttrSign = False
 						self.extraAttr = ""
+						self.annotation_lable = False
+						self.annotation_end = False
 						continue
+					elif self.annotation_lable:
+						self.extraAttr += atb
+						continue
+
 					LOGGER.error("delete Lable failed {0}".format(self.t_startLable))
 					recodeExcept(*sys.exc_info())
 					LOGGER.error(traceback.format_exc())
@@ -77,7 +94,7 @@ class splitContent():
 				# Disassemble the content
 				# return key,value
 				t_attData = self.mapDict(atb)
-				#c处理非标准格式的html，同一个属性值被换行，进行组合
+				#处理非标准格式的html，同一个属性值被换行，进行组合
 				if len(t_attData) == 2:
 					if self.joinattr:
 						self.gen_ExpectionDict(["non-key", self.joinattr])
@@ -133,7 +150,7 @@ class splitContent():
 							self.globalKey = None
 					else:
 						if not self.s_LableList:
-							LOGGER.warn("star lableList is null,attribute formal error {0}".format(atb))
+							LOGGER.warn("start lableList is null,attribute formal error {0}".format(atb))
 							continue
 						elif self.extraAttrSign:
 							self.extraAttr += atb
@@ -192,7 +209,9 @@ class splitContent():
 				t_attrList[1] = t_attrList[1].strip('"')
 				if t_attrList[0] in DOWNLOAD_ATTRIBUTE:
 					downurl = self.fullurl(t_attrList[1])
-					DN_QUEUE.put(downurl)
+					LOGGER.info("put  download queue {0}".format(downurl))
+					self.dn_queue.put(downurl)
+					self.func(downurl)
 			except:
 				LOGGER.error("attribute is error '{0}'".format(t_attrList))
 				recodeExcept(*sys.exc_info())
@@ -230,6 +249,7 @@ class splitContent():
 							t_htmlDict[k] = kv_data
 						else:
 							LOGGER.info('writing lable data {0} ,endkey {1}'.format(kv_data, endkeys))
+							#处理重复标签名称，给每个标签加上编号
 							if self.globalKey:
 								k = self.globalKey
 							LOGGER.debug("current t_htmlDict keys {0}".format(t_htmlDict.keys()))
@@ -346,7 +366,7 @@ class splitContent():
 							diff = yield self.singleAttribute
 							LOGGER.warn("date style error!date:{0}.".format(line))
 						self.singleAttribute = ''
-	def pagesplit(self,anayurl):
+	def pagesplit(self,anayurl,dn_queue):
 		"""
 		anayurl:/webpage/website/*
 		:param anayurl:
@@ -355,28 +375,18 @@ class splitContent():
 
 		self.htmlpro = anayurl[0]
 		Localurl = anayurl[1]
-		self.sitename = Localurl.split("/")[0]
+		self.sitename = Localurl.split("/")[1]
+		self.dn_queue = dn_queue
 		with open(Localurl,'r',encoding='UTF-8',errors='ignore') as f:
-			for line in f.readline():
+			for line in f.readlines():
 				fetcheLable = self.fetcheLables(line)
 
 			json_str = json.dumps(self.htmlDict,check_circular=False, indent=4)
 			return json_str,self.lableCount
 
 if __name__ == '__main__':
-	# line = '<script src="https://csdnimg.cn/release/phoenix/vendor/tingyun'
-	line2 = '/tingyun-rum-blog.js">a dgh ds"</script>'
+	line = 'webpage/blog.csdn.net/blog.csdn.net/sicofield/article/details/8635351'
+	line2 = 'C:\\Users\\belief\\Desktop\\Mr.S\\GitHub\\Infinity_crawler\\webpage\\blog.csdn.net\\sicofield\\article\\details\\8635351'
 	splitcontent = splitContent()
-	# itercontent = splitcontent.propertySplit(line)
-	
-	with open('webpage/blog.csdn.net/blog.csdn.net/sicofield/article/details/8635351', 'r', encoding='UTF-8',
-			  errors='ignore') as f:
-		for line in f.readlines():
-			print(line)
-			# property_Split = splitcontent.propertySplit(line)
-			# for i in property_Split:
-			#    print(i)
-			fetcheLab = splitcontent.fetcheLables(line)
-			print(splitcontent.htmlDict)
-		json_str = json.dumps(splitcontent.htmlDict, check_circular=False, indent=4)
-		print(json_str)
+	itercontent = splitcontent.pagesplit(['http',line2])
+

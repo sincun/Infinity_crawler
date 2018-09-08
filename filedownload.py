@@ -9,7 +9,7 @@ from urllib import request
 
 class fileDownload(threading.Thread):
 
-    def __init__(self,url,filepath,dynamic=False,handler=True):
+    def __init__(self,url,filepath,dynamic=False,handler=True,addanalyqueue=None):
         
         threading.Thread.__init__(self)
         #结尾没有是/或？号，表示目录下有主页，人为给首页index.html
@@ -27,6 +27,12 @@ class fileDownload(threading.Thread):
             self.__filepath = '/'.join(filepath)+"index.html"
         else:
             self.__filepath = '/'.join(filepath)
+
+        if addanalyqueue:
+            self.addanalyqueue = addanalyqueue
+        else:
+            LOGGER.error("argment error,accept object must be queue")
+            sys.exit(99)
 
         self.__dynamic_page = dynamic
         self.__handler_flag = handler
@@ -46,9 +52,11 @@ class fileDownload(threading.Thread):
             urllib.request.urlretrieve(downurl,fileurl,self.schedule)
             #添加待解析页面到队列
             if self.__handler_flag:
-                THREADINGLOCK.acquire()
-                ANALY_QUEUE.put([self.headers,fileurl])
-                THREADINGLOCK.release()
+                #THREADINGLOCK.acquire()
+                LOGGER.info("put analysis queue {0}".format(fileurl))
+                self.addanalyqueue.put([self.headers,fileurl])
+                #THREADINGLOCK.release()
+            LOGGER.debug("url {0} dwonload complate!,queue length {1}".format(downurl,self.addanalyqueue.qsize()))
         except urllib.error.HTTPError as e:
             LOGGER.warn("url not download {0}".format(downurl))
             LOGGER.warn(e)
