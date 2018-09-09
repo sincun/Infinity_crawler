@@ -313,11 +313,13 @@ class splitContent():
 				diff = yield self.singleAttribute
 				self.singleAttribute = ''
 			else:
+				#处理""中的内容不做拆分，stopCode为封闭符
 				if (char == '"' or char == "'") and self.scopeLable != ">":
-					if char in self.stopCode:
-						self.stopCode.pop(-1)
-					else:
+					if not self.stopCode:
 						self.stopCode.append(char)
+					elif char in self.stopCode:
+						self.stopCode.pop(-1)
+
 				elif char == "<":
 					# 处理特殊标签，如<em>
 					if char == self.scopeLable:
@@ -377,6 +379,7 @@ class splitContent():
 		Localurl = anayurl[1]
 		self.sitename = Localurl.split("/")[1]
 		self.dn_queue = dn_queue
+		LOGGER.info("start analysis url {0}".format(self.dn_queue))
 		with open(Localurl,'r',encoding='UTF-8',errors='ignore') as f:
 			for line in f.readlines():
 				fetcheLable = self.fetcheLables(line)

@@ -11,7 +11,7 @@ _console_handler = logging.StreamHandler(sys.stdout)
 _console_handler.setFormatter(_formatter)
 LOGGER.addHandler(_file_handler)
 LOGGER.addHandler(_console_handler)
-LOGGER.setLevel(logging.DEBUG)
+LOGGER.setLevel(logging.INFO)
 
 #@staticmethod
 def recodeExcept(etype,evalue,etraceback):
