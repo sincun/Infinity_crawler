@@ -48,6 +48,7 @@ USER_AGENT = ['Mozilla/5.0(Windows;U;WindowsNT6.1;en-us)AppleWebKit/534.50(KHTML
 
 #之前已经处理过的url
 USEURL = set()
+FAILED_URL = set()
 #cut suffix
 PARTERN = re.compile(r'^([^\?]*)[\?]?')
 STATICPAGE = ('htm','html','shtml','xml')

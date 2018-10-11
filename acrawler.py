@@ -103,7 +103,7 @@ class crawler(object):
 		
 		return postdata
 	#构建urlopen，urlopen方式暂时未使用，目前直接下载页面到本地再解析
-	def buildOpenUrl(self, proxy_addr=None, cookies=None, post=None):
+	def buildOpenUrl(self, url, proxy_addr=None, cookies=None, post=None):
 		# User-Agent需要做成随机的防止封禁
 		randomNum = random.randint(0, 9)
 		header = {"User-Agent": USER_AGENT[randomNum]}
@@ -112,21 +112,21 @@ class crawler(object):
 		if post:
 			if isinstance(post, dict):
 				post = urllib.parse.urlencode(post).encode()
-				requests = urllib.request.Request(self.url, data=post, headers=header)
+				requests = urllib.request.Request(url, data=post, headers=header)
 			else:
 				LOGGER.warn("psot data format error '{0}'".format(post))
-				requests = urllib.request.Request(self.url, headers=header)
+				requests = urllib.request.Request(url, headers=header)
 		else:
-			requests = urllib.request.Request(self.url, headers=header)
+			requests = urllib.request.Request(url, headers=header)
 		try:
 			response = urllib.request.urlopen(requests)
 		except:
-			LOGGER.error("urlopen error '{0}'".format(self.url))
+			LOGGER.error("urlopen error '{0}'".format(url))
 			recodeExcept(*sys.exc_info())
 			LOGGER.error(traceback.format_exc())
 			LOGGER.error("Except EOF")
 		
-		return response
+		return requests
 
 	#当前路径转换为绝对路径
 	def fullurl(self, link):
@@ -203,8 +203,8 @@ class crawler(object):
 			else:
 				analyhtml = False
 
-
-			download = filedownload.fileDownload(currenturl, path,dynamic=dynamichtml,handler=analyhtml,addanalyqueue=analyqueue)
+			requests = self.buildOpenUrl(currenturl,proxy_addr=None, cookies=None, post=None)
+			download = filedownload.fileDownload(currenturl,requests, path,dynamic=dynamichtml,handler=analyhtml,addanalyqueue=analyqueue)
 			download.start()
 			threadlist.append(download)
 

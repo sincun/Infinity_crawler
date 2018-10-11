@@ -20,7 +20,7 @@ class multiProcessResultThread(threading.Thread):
 
 	def run(self):
 		try:
-			self.result = self.ins.get(timeout=20)
+			self.json_str,self.lablecount = self.ins.get(timeout=20)
 
 			LOGGER.debug("analysis result {0}".format(self.result))
 			#队列的添加移到解析文件的时候增加
@@ -36,7 +36,7 @@ class multiProcessResultThread(threading.Thread):
 		ISALIVE.remove(self)
 
 	def getresult(self):
-		return self.result
+		return self.json_str,self.lablecount
 
 
 class LaunchCapture(object):
@@ -47,7 +47,7 @@ class LaunchCapture(object):
 	def queueCallback(self):
 		pass
 	@staticmethod
-	def dnPutCollback(queues):
+	def dnPutCallback(queues):
 		global DN_QUEUE
 		#DN_QUEUE.put(queues)
 		pass
@@ -59,7 +59,7 @@ class LaunchCapture(object):
 		if url:
 			DN_QUEUE.put(url)
 		useUrl = DN_QUEUE.get(timeout=120)
-		crawler = acrawler.crawler(statistics=3)
+		crawler = acrawler.crawler(statistics=0)
 		try:
 			downloadurlPro = multiprocessing.Process(target=crawler.analysis,args=(useUrl,DN_QUEUE,ANALY_QUEUE))
 			downloadurlPro.start()
@@ -88,18 +88,19 @@ class LaunchCapture(object):
 				error_getcount += 1
 				LOGGER.info("download process status {0}".format(downloadurlPro.is_alive()))
 				LOGGER.error("get analysis queue count {0}".format(error_getcount))
-				if error_getcount > 3 and not downloadurlPro.is_alive():
+				if error_getcount > 12 and not downloadurlPro.is_alive():
 					LOGGER.info("exit url analysis")
 					break
 				continue
-			splitcontent = splitContent(self.dnPutCollback)
+			splitcontent = splitContent(self.dnPutCallback)
 			multprocessResult = self.pool.apply_async(splitcontent.pagesplit,args=(analyUrl,DN_QUEUE,))
 			addQueue = multiProcessResultThread(multprocessResult)
 			ISALIVE.append(addQueue)
 
 			addQueue.start()
+		LOGGER.info("will exit,waitting threading end!!!")
 		addQueue.join()
-
+		LOGGER.info("threading end!!!")
 		self.pool.close()
 		self.pool.join()
 		downloadurlPro.join()

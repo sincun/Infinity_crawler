@@ -54,6 +54,8 @@ class splitContent():
 		self.persingleAttribute = ''
 		#结束标签获取
 		self.nonspace = True
+		#本地文件名
+		self.Localurl = None
 
 	def fetcheLables(self, line):
 		"""
@@ -227,9 +229,11 @@ class splitContent():
 				return attr
 			try:
 				t_attrList[1] = t_attrList[1].strip('"')
+				t_attrList[1] = t_attrList[1].strip("'")
 				if t_attrList[0] in DOWNLOAD_ATTRIBUTE:
+					#补充为完整的url
 					downurl = self.fullurl(t_attrList[1])
-					LOGGER.info("put  download queue {0}".format(downurl))
+					LOGGER.info("put  download queue {0},filename {1}".format(downurl,self.Localurl))
 					self.dn_queue.put(downurl)
 					self.func(downurl)
 			except:
@@ -455,11 +459,11 @@ class splitContent():
 		"""
 
 		self.htmlpro = anayurl[0]
-		Localurl = anayurl[1]
-		self.sitename = Localurl.split("/")[1]
+		self.Localurl = anayurl[1]
+		self.sitename = self.Localurl.split("/")[1]
 		self.dn_queue = dn_queue
 		LOGGER.info("start analysis url {0}".format(self.dn_queue))
-		with open(Localurl,'r',encoding='UTF-8',errors='ignore') as f:
+		with open(self.Localurl,'r',encoding='UTF-8',errors='ignore') as f:
 			for line in f.readlines():
 				fetcheLable = self.fetcheLables(line)
 
@@ -468,7 +472,7 @@ class splitContent():
 
 if __name__ == '__main__':
 	line = 'webpage/blog.csdn.net/sicofield/article/details/8635351'
-	line2 = 'C:/Users/belief/Desktop/Mr.S/GitHub/Infinity_crawler/webpage/blog.csdn.net#'
+	line2 = 'webpage/blog.csdn.net/python_nice/article/details/81013267'
 	line3 = 'C:/Users/belief/Desktop/Mr.S/GitHub/Infinity_crawler/webpage/aa'
 	queue = Queue(1000)
 	splitcontent = splitContent(lambda x:print("a"))
