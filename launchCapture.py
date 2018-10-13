@@ -61,6 +61,7 @@ class LaunchCapture(object):
 		if url:
 			DN_QUEUE.put(url)
 		useUrl = DN_QUEUE.get(timeout=120)
+		#statistics: Download the numbe limit,0 is unlimited
 		crawler = acrawler.crawler(statistics=0)
 		try:
 			downloadurlPro = multiprocessing.Process(target=crawler.analysis,args=(useUrl,DN_QUEUE,ANALY_QUEUE))
@@ -122,8 +123,10 @@ class LaunchCapture(object):
 if __name__ ==  '__main__':
 
 	manage = Manager()
+	#queue
 	DN_QUEUE = manage.Queue(500)
 	ANALY_QUEUE = manage.Queue(500)
+	#initial url
 	url = 'https://blog.csdn.net/sicofield/article/details/8635351'
 	launching = LaunchCapture()
 	launching.main(url)
