@@ -234,10 +234,10 @@ class splitContent():
 					#补充为完整的url
 					downurl = self.fullurl(t_attrList[1])
 					LOGGER.info("put  download queue {0},filename {1}".format(downurl,self.Localurl))
-					self.dn_queue.put(downurl)
+					self.dn_queue.put(downurl,timeout=60)
 					self.func(downurl)
 			except:
-				LOGGER.error("attribute is error '{0}'".format(t_attrList))
+				LOGGER.error("attribute is error '{0}',queue size {1}".format(t_attrList,self.dn_queue.qsize()))
 				recodeExcept(*sys.exc_info())
 				LOGGER.error(traceback.format_exc())
 				LOGGER.error("Except EOF")

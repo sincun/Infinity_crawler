@@ -125,6 +125,7 @@ class crawler(object):
 			recodeExcept(*sys.exc_info())
 			LOGGER.error(traceback.format_exc())
 			LOGGER.error("Except EOF")
+
 		
 		return requests
 
@@ -203,10 +204,16 @@ class crawler(object):
 			else:
 				analyhtml = False
 
-			requests = self.buildOpenUrl(currenturl,proxy_addr=None, cookies=None, post=None)
-			download = filedownload.fileDownload(currenturl,requests, path,dynamic=dynamichtml,handler=analyhtml,addanalyqueue=analyqueue)
-			download.start()
-			threadlist.append(download)
+			try:
+				requests = self.buildOpenUrl(currenturl,proxy_addr=None, cookies=None, post=None)
+				download = filedownload.fileDownload(currenturl,requests, path,dynamic=dynamichtml,handler=analyhtml,addanalyqueue=analyqueue)
+				download.start()
+				threadlist.append(download)
+			except:
+				LOGGER.warn("download url failed {0}".format(currenturl))
+				recodeExcept(*sys.exc_info())
+				LOGGER.error(traceback.format_exc())
+				LOGGER.error("Except EOF")
 
 			self.sitearry.add(access_url)
 			urlnum += 1

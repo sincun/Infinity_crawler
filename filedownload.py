@@ -179,9 +179,14 @@ class fileDownload(threading.Thread):
 
             #print('dirs',tempdir)
             try:
-                if not os.path.exists(tempdir):
+                if not os.path.isdir(tempdir):
                     #print(tempdir)
                     os.mkdir(tempdir)
             except NameError:
-                print('Failded to create directory in %s'%dirs)
+                LOGGER.error('Failded to create directory in %s'%dirs)
                 exit()
+            except:
+                LOGGER.error("Failded to create directory in '{0}'".format(self.__downurl))
+                recodeExcept(*sys.exc_info())
+                LOGGER.error(traceback.format_exc())
+                LOGGER.error("Except EOF")

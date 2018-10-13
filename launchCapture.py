@@ -12,15 +12,16 @@ from setting import *
 ISALIVE = []
 tlock = threading.Lock()
 class multiProcessResultThread(threading.Thread):
-	def __init__(self,processins):
+	def __init__(self,processins,analyUrl):
 		#threading.Thread.__init__(self)
 		super(multiProcessResultThread,self).__init__()
 		self.ins = processins
+		self.handler_url = analyUrl
 		self.result = ()
 
 	def run(self):
 		try:
-			self.json_str,self.lablecount = self.ins.get(timeout=20)
+			self.json_str,self.lablecount = self.ins.get(timeout=120)
 
 			LOGGER.debug("analysis result {0}".format(self.result))
 			#队列的添加移到解析文件的时候增加
@@ -30,6 +31,7 @@ class multiProcessResultThread(threading.Thread):
 			#tlock.release()
 
 		except:
+			LOGGER.error("url analysis timeout '{0}'".format(self.handler_url))
 			recodeExcept(*sys.exc_info())
 			LOGGER.error(traceback.format_exc())
 			LOGGER.error("Except EOF")
@@ -94,7 +96,7 @@ class LaunchCapture(object):
 				continue
 			splitcontent = splitContent(self.dnPutCallback)
 			multprocessResult = self.pool.apply_async(splitcontent.pagesplit,args=(analyUrl,DN_QUEUE,))
-			addQueue = multiProcessResultThread(multprocessResult)
+			addQueue = multiProcessResultThread(multprocessResult,analyUrl)
 			ISALIVE.append(addQueue)
 
 			addQueue.start()
@@ -103,7 +105,9 @@ class LaunchCapture(object):
 		LOGGER.info("threading end!!!")
 		self.pool.close()
 		self.pool.join()
-		downloadurlPro.join()
+		LOGGER.info("end!!!")
+		#if downloadurlPro:
+		#	downloadurlPro.join()
 
 
 	def urlIsNone(self):
