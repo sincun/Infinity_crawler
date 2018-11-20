@@ -8,7 +8,6 @@ from splitcontent import *
 from setting import *
 
 
-
 ISALIVE = []
 tlock = threading.Lock()
 class multiProcessResultThread(threading.Thread):
@@ -21,7 +20,7 @@ class multiProcessResultThread(threading.Thread):
 
 	def run(self):
 		try:
-			self.json_str,self.lablecount = self.ins.get(timeout=120)
+			self.json_str,self.lablecount,self.localFilePath = self.ins.get(timeout=120)
 
 			LOGGER.debug("analysis result {0}".format(self.result))
 			#队列的添加移到解析文件的时候增加
@@ -35,10 +34,10 @@ class multiProcessResultThread(threading.Thread):
 			recodeExcept(*sys.exc_info())
 			LOGGER.error(traceback.format_exc())
 			LOGGER.error("Except EOF")
-		ISALIVE.remove(self)
+		#ISALIVE.remove(self)
 
 	def getresult(self):
-		return self.json_str,self.lablecount
+		return self.json_str,self.lablecount,self.localFilePath
 
 
 class LaunchCapture(object):
@@ -53,6 +52,16 @@ class LaunchCapture(object):
 		global DN_QUEUE
 		#DN_QUEUE.put(queues)
 		pass
+
+	def getAnalyResult(self):
+		for processQueue in ISALIVE:
+			try:
+				json_str, lablecount,localUrlPath = processQueue.getresult()
+				ISALIVE.remove(processQueue)
+				LOGGER.info(json_str)
+				LOGGER.info(lablecount)
+			except AttributeError:
+				LOGGER.info("thread have not done to fetch result,continue wait")
 #    @staticmethod
 	def main(self,url=None):
 
@@ -61,8 +70,8 @@ class LaunchCapture(object):
 		if url:
 			DN_QUEUE.put(url)
 		useUrl = DN_QUEUE.get(timeout=120)
-		#statistics: Download the numbe limit,0 is unlimited
-		crawler = acrawler.crawler(statistics=0)
+		#statistics: Download limit,0 is unlimited
+		crawler = acrawler.crawler(statistics=3)
 		try:
 			downloadurlPro = multiprocessing.Process(target=crawler.analysis,args=(useUrl,DN_QUEUE,ANALY_QUEUE))
 			downloadurlPro.start()
@@ -74,6 +83,7 @@ class LaunchCapture(object):
 
 		LOGGER.debug("start queue length {0},download process {1},status: {2}".format(DN_QUEUE.qsize(),downloadurlPro.pid,downloadurlPro.is_alive()))
 		error_getcount = 0
+		#multiProcessResultThread.setDaemon(True)
 		while ANALY_QUEUE.qsize() != 0 or downloadurlPro.is_alive() or ISALIVE:
 			#you could rewirte analysisHandler method,if you need.‘analysisHandler' method is major handle web page.
 			# get what you want,but must reutrn  a python "set()" which  name is referred to slef.webPage ,it's con-
@@ -94,15 +104,25 @@ class LaunchCapture(object):
 				if error_getcount > 12 and not downloadurlPro.is_alive():
 					LOGGER.info("exit url analysis")
 					break
+				self.getAnalyResult()
 				continue
 			splitcontent = splitContent(self.dnPutCallback)
 			multprocessResult = self.pool.apply_async(splitcontent.pagesplit,args=(analyUrl,DN_QUEUE,))
 			addQueue = multiProcessResultThread(multprocessResult,analyUrl)
-			ISALIVE.append(addQueue)
 
+			ISALIVE.append(addQueue)
 			addQueue.start()
+			self.getAnalyResult()
+
 		LOGGER.info("will exit,waitting threading end!!!")
-		addQueue.join()
+		if ISALIVE:
+			for laterThread in ISALIVE:
+				try:
+					laterThread.join()
+					json_str, lablecount, localUrlPath = laterThread.getresult()
+					LOGGER.info("thread out {0}".format(json_str))
+				except:
+					LOGGER.error("result is failed ,to review  analysis timeout url")
 		LOGGER.info("threading end!!!")
 		self.pool.close()
 		self.pool.join()
@@ -125,7 +145,7 @@ if __name__ ==  '__main__':
 	manage = Manager()
 	#queue
 	DN_QUEUE = manage.Queue(500)
-	ANALY_QUEUE = manage.Queue(500)
+	ANALY_QUEUE = manage.Queue(50000)
 	#initial url
 	url = 'https://blog.csdn.net/sicofield/article/details/8635351'
 	launching = LaunchCapture()

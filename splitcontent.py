@@ -96,10 +96,10 @@ class splitContent():
 					self.t_startLable = None
 
 				except:
-					LOGGER.error("delete Lable failed {0}".format(self.t_startLable))
+					LOGGER.warn("delete Lable failed {0}".format(self.t_startLable))
 					recodeExcept(*sys.exc_info())
-					LOGGER.error(traceback.format_exc())
-					LOGGER.error("Except EOF")
+					LOGGER.warn(traceback.format_exc())
+					LOGGER.warn("Except EOF")
 					#存在不标准内容或注释时处理，
 					if self.extraAttrSign:
 						LOGGER.error("write Lable extraAttr {0}".format(self.globalKey))
@@ -156,7 +156,7 @@ class splitContent():
 						# 标签是否结束
 						endSymbol = self.t_endLable.group(1)
 						if endSymbol:
-							LOGGER.info("clear end lable {0},LableList is {1}".format(endSymbol, self.s_LableList))
+							LOGGER.debug("clear end lable {0},LableList is {1}".format(endSymbol, self.s_LableList))
 							try:
 								if endSymbol in self.s_LableList:
 									while len(self.s_LableList) > 0:
@@ -234,7 +234,8 @@ class splitContent():
 					#补充为完整的url
 					downurl = self.fullurl(t_attrList[1])
 					LOGGER.info("put  download queue {0},filename {1}".format(downurl,self.Localurl))
-					self.dn_queue.put(downurl,timeout=60)
+					if not self.dn_queue.full():
+						self.dn_queue.put(downurl,timeout=60)
 					self.func(downurl)
 			except:
 				LOGGER.error("attribute is error '{0}',queue size {1}".format(t_attrList,self.dn_queue.qsize()))
@@ -272,13 +273,21 @@ class splitContent():
 						if isinstance(kv_data, dict):
 							t_htmlDict[k] = kv_data
 						else:
-							LOGGER.info('writing lable data {0} ,endkey {1}'.format(kv_data, endkeys))
+							LOGGER.debug('writing lable data {0} ,endkey {1}'.format(kv_data, endkeys))
 							#处理重复标签名称，给每个标签加上编号
 							if self.globalKey:
 								k = self.globalKey
 							LOGGER.debug("current t_htmlDict keys {0}".format(t_htmlDict.keys()))
 							if self.lableAttrRecord == 0:
-								k = k + repr(len(t_htmlDict.keys()))
+								lable_num = 0
+								for l in t_htmlDict.keys():
+									try:
+										ext_l = re.match(r'[a-zA-Z]+',l).group()
+									except:
+										continue
+									if k == ext_l:
+										lable_num += 1
+								k = k + repr(lable_num)
 								self.globalKey = k
 								t_htmlDict[k] = {kv_data[0]: kv_data[1]}
 							elif kv_data[0] in t_htmlDict[k].keys():
@@ -468,7 +477,7 @@ class splitContent():
 				fetcheLable = self.fetcheLables(line)
 
 			json_str = json.dumps(self.htmlDict,check_circular=False, indent=4)
-			return json_str,self.lableCount
+			return json_str,self.lableCount,self.Localurl
 
 if __name__ == '__main__':
 	line = 'webpage/blog.csdn.net/sicofield/article/details/8635351'
