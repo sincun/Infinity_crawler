@@ -79,7 +79,7 @@ class crawler(object):
 			return None
 		return recvdata
 	
-	##************************，above method will not by used************************
+	##************************，above method will not  used************************
 	def proxy_acs(self, proxy_addr=None, cookies=None):
 		if proxy_addr:
 			proxy = urllib.request.ProxyHandler({'http': proxy_addr})
@@ -224,9 +224,7 @@ class crawler(object):
 		for t in threadlist:
 				t.join()
 
-	
-	# --根据不同类型建立进程池，在进程池中分别建立多线程处理每种结果类型--
-	
+	#
 	def fetchfileurl(self, types, mkpath):
 		
 		partern = PARTERN
@@ -254,13 +252,13 @@ class crawler(object):
 					fullfilepath.append(p)
 			else:
 				continue
-		# print('1111111111',filename[-1])
+		# print(filename[-1])
 		fullfilepath.append(partern.match(filename[-1]).group(1))
 		
 		# print(fullfilepath)
 		return fullfilepath
 	
-	# 启动一个新的线程或进程继续解析连接
+	#
 	def ophref(self, href, pagetype=None):
 		
 		fetchsuffix = re.compile(r'\S+\.(\w+)$')

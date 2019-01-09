@@ -13,6 +13,7 @@ LOGGER.addHandler(_file_handler)
 LOGGER.addHandler(_console_handler)
 LOGGER.setLevel(logging.INFO)
 
+#捕捉异常方法
 #@staticmethod
 def recodeExcept(etype,evalue,etraceback):
 
@@ -31,6 +32,7 @@ def recodeExcept(etype,evalue,etraceback):
 THREADINGLOCK = threading.Lock()
 THREADINGRLOCK = threading.RLock()
 COOKIES_ENABLED = False
+#代理目前还没完全实现
 PROXY_ADDR = "61.163.39.70:9999"
 WEIXIN_UA = "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12A365 MicroMessenger/5.4.1 NetType/WIFI"
 USER_AGENT = ['Mozilla/5.0(Windows;U;WindowsNT6.1;en-us)AppleWebKit/534.50(KHTML,likeGecko)Version/5.1Safari/534.50',
@@ -51,6 +53,7 @@ USEURL = set()
 FAILED_URL = set()
 #cut suffix
 PARTERN = re.compile(r'^([^\?]*)[\?]?')
+#下列后缀的页面下载后将被2次解析
 STATICPAGE = ('htm','html','shtml','xml')
 DYNAMICPAGE = ('aspx','asp','jsp','php','perl','cgi')
 EXCLUDEPAGE = ("js","css")
@@ -62,6 +65,13 @@ NON_ENDLABLE = ('link','meta','img','base','basefont','br','col','embed','frame'
 #               'dropzone','hidden','spellcheck','translate'
 GLOBAL_ATTRIBUTE = ('lang','data-*')
 DOWNLOAD_ATTRIBUTE = ('href','src','poster')
+
+#设置下载url数量,0为下载不受限制
+STATISTICS = 3
+#是否往es中写入数据，True为写入es，False为不写入
+WRITEES = False
+#解析的初始url
+INIT_URL = 'https://blog.csdn.net/sicofield/article/details/8635351'
 #http lable,and attribute
 #<a> lable attribute
 A_ATTRIBUTE = ('href')

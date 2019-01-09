@@ -57,6 +57,9 @@ class splitContent():
 		#本地文件名
 		self.Localurl = None
 
+		self.is_join = 0
+		self.json_key = []
+
 	def fetcheLables(self, line):
 		"""
 
@@ -92,6 +95,13 @@ class splitContent():
 					# 处理没有结束标签的标签，在setting中设置
 					if self.s_LableList and self.t_startLable.group(1) in self.non_endLable:
 						self.s_LableList.pop()
+						self.is_join = 0
+
+						last_json_key = '_'.join(self.json_key[-1].split('_')[:-1])
+						if last_json_key:
+							self.json_key[-1] = last_json_key
+						else:
+							self.json_key.pop()
 
 					self.t_startLable = None
 
@@ -144,7 +154,16 @@ class splitContent():
 						self.gen_ExpectionDict(t_attData)
 						self.extraAttrSign = False
 						self.extraAttr = ""
-					self.s_LableList.append(self.t_startLable.group(1))
+					new_lable = self.t_startLable.group(1)
+					self.s_LableList.append(new_lable)
+					if self.is_join == 0:
+						if self.json_key:
+							self.json_key[-1] = self.json_key[-1] + "_" + new_lable
+						else:
+							self.json_key.append(new_lable)
+					else:
+						self.json_key.append(new_lable)
+
 					self.lableCount += 1
 					self.lableAttrRecord = 0
 					self.globalKey = None
@@ -161,6 +180,12 @@ class splitContent():
 								if endSymbol in self.s_LableList:
 									while len(self.s_LableList) > 0:
 										l_endSymbol = self.s_LableList.pop()
+										self.is_join = 0
+										last_json_key = '_'.join(self.json_key[-1].split('_')[:-1])
+										if last_json_key:
+											self.json_key[-1] = last_json_key
+										else:
+											self.json_key.pop()
 										if l_endSymbol == endSymbol:
 											break
 								else:
@@ -176,6 +201,12 @@ class splitContent():
 						else:
 							LOGGER.debug("clear end lable {0}".format(self.s_LableList))
 							self.s_LableList.pop()
+							self.is_join = 0
+							last_json_key = '_'.join(self.json_key[-1].split('_')[:-1])
+							if last_json_key:
+								self.json_key[-1] = last_json_key
+							else:
+								self.json_key.pop()
 							self.lableAttrRecord = 0
 							self.globalKey = None
 					else:
@@ -251,13 +282,17 @@ class splitContent():
 		:return:
 		"""
 		#
+		if kv_data[0] not in  ('href','src','poster','values') or not self.json_key:
+			LOGGER.debug(" have not  write date {0}".format(kv_data))
+			return self.is_join
 		LOGGER.debug("will write date {0}".format(kv_data))
-		LOGGER.debug("s_LableList is{0}".format(self.s_LableList))
+		LOGGER.debug("s_LableList is{0} {1}".format(self.s_LableList,self.json_key))
 		LOGGER.debug("htmlData is {0}".format(self.htmlDict))
-		desc_k = self.s_LableList.copy()
+		#desc_k = self.s_LableList.copy()
+		desc_k = self.json_key.copy()
 		
 		while desc_k:
-			if self.s_LableList:
+			if self.json_key:
 				endkeys = desc_k[-1]
 			else:
 				pass
@@ -315,6 +350,7 @@ class splitContent():
 			self.htmlDict = {kv_data[0]:kv_data[1]}
 		elif isinstance(kv_data,dict):
 			self.htmlDict = kv_data
+		return self.is_join + 1
 	
 	def standardContent(self, startLable, endLable, line):
 		
@@ -476,8 +512,7 @@ class splitContent():
 			for line in f.readlines():
 				fetcheLable = self.fetcheLables(line)
 
-			json_str = json.dumps(self.htmlDict,check_circular=False, indent=4)
-			return json_str,self.lableCount,self.Localurl
+			return self.htmlDict,self.lableCount,self.Localurl
 
 if __name__ == '__main__':
 	line = 'webpage/blog.csdn.net/sicofield/article/details/8635351'
@@ -485,6 +520,6 @@ if __name__ == '__main__':
 	line3 = 'C:/Users/belief/Desktop/Mr.S/GitHub/Infinity_crawler/webpage/aa'
 	queue = Queue(1000)
 	splitcontent = splitContent(lambda x:print("a"))
-	itercontent,lablesnumber = splitcontent.pagesplit(['http',line2],queue)
-	print(repr(lablesnumber)+":"+itercontent)
+	itercontent,lablesnumber,localurl = splitcontent.pagesplit(['http',line2],queue)
+	print(json.dumps(itercontent, check_circular=False, indent=4))
 

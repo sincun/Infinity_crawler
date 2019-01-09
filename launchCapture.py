@@ -1,10 +1,12 @@
 import random
 import threading
 import traceback
+from datetime import datetime
 import multiprocessing
 from multiprocessing import Manager
 import acrawler
 from splitcontent import *
+from writeES import writeElasticsearch
 from setting import *
 
 
@@ -42,8 +44,9 @@ class multiProcessResultThread(threading.Thread):
 
 class LaunchCapture(object):
 	"""launching acrawler class"""
-	def __init__(self):
+	def __init__(self,writees = False):
 		self.pool = multiprocessing.Pool(processes=4)
+		self.is_write_es = writees
 
 	def queueCallback(self):
 		pass
@@ -53,25 +56,52 @@ class LaunchCapture(object):
 		#DN_QUEUE.put(queues)
 		pass
 
+	def getJson(self,processQueue):
+		"""
+		:param processQueue:
+		:return:
+		"""
+		try:
+			htmldict, lablecount, localUrlPath = processQueue.getresult()
+			current_date = datetime.now()
+			htmldict['timestamp'] = current_date.strftime("%Y-%m-%d %H:%M:%S")
+			#htmldict['timestamp'] = datetime.now()
+			htmldict['filepath'] = localUrlPath
+			htmldict['statistics'] = lablecount
+			json_str = json.dumps(htmldict, check_circular=False, indent=4)
+			#json_str = htmldict
+			# 生成es doc
+			if self.is_write_es:
+				LOGGER.debug(json_str)
+				self.write_es.writeES(json_str)
+				LOGGER.info("write success to elasticsearch")
+			ISALIVE.remove(processQueue)
+			LOGGER.info(json_str)
+			LOGGER.info(lablecount)
+			return json_str,lablecount, localUrlPath
+		except:
+			LOGGER.info("thread have not done to fetch result,continue wait")
+			recodeExcept(*sys.exc_info())
+			LOGGER.error(traceback.format_exc())
+			LOGGER.error("Except EOF")
+			return None
+
 	def getAnalyResult(self):
 		for processQueue in ISALIVE:
-			try:
-				json_str, lablecount,localUrlPath = processQueue.getresult()
-				ISALIVE.remove(processQueue)
-				LOGGER.info(json_str)
-				LOGGER.info(lablecount)
-			except AttributeError:
-				LOGGER.info("thread have not done to fetch result,continue wait")
+			self.getJson(processQueue)
+
 #    @staticmethod
 	def main(self,url=None):
 
 		#analy_queue = ANALY_QUEUE
 		#dn_queue = DN_QUEUE
+		if self.is_write_es:
+			self.write_es = writeElasticsearch('10.1.71.80',9200)
 		if url:
 			DN_QUEUE.put(url)
 		useUrl = DN_QUEUE.get(timeout=120)
 		#statistics: Download limit,0 is unlimited
-		crawler = acrawler.crawler(statistics=3)
+		crawler = acrawler.crawler(statistics=STATISTICS)
 		try:
 			downloadurlPro = multiprocessing.Process(target=crawler.analysis,args=(useUrl,DN_QUEUE,ANALY_QUEUE))
 			downloadurlPro.start()
@@ -114,12 +144,12 @@ class LaunchCapture(object):
 			addQueue.start()
 			self.getAnalyResult()
 
-		LOGGER.info("will exit,waitting threading end!!!")
+		LOGGER.info("will exit,waitting threading end!!! {0}".format(ISALIVE))
 		if ISALIVE:
 			for laterThread in ISALIVE:
 				try:
 					laterThread.join()
-					json_str, lablecount, localUrlPath = laterThread.getresult()
+					json_str, *args = self.getJson(laterThread)
 					LOGGER.info("thread out {0}".format(json_str))
 				except:
 					LOGGER.error("result is failed ,to review  analysis timeout url")
@@ -147,6 +177,6 @@ if __name__ ==  '__main__':
 	DN_QUEUE = manage.Queue(500)
 	ANALY_QUEUE = manage.Queue(50000)
 	#initial url
-	url = 'https://blog.csdn.net/sicofield/article/details/8635351'
-	launching = LaunchCapture()
+	url = INIT_URL
+	launching = LaunchCapture(writees = WRITEES)
 	launching.main(url)
